@@ -7,11 +7,15 @@ import SideBar from '../components/SideBar';
 
 const Home: NextPage = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+    <div className='bg-purp h-screen overflow-hidden'>
       <Head>
-        <title>Create Next App</title>
+        <title>Playlist AI.</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <main className=''>
+
+      </main>
       <SideBar />
     </div>
   )

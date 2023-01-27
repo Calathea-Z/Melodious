@@ -6,7 +6,14 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors:{ 
+        transparent: 'transparent',
+        current: 'currentColor', 
+        'purp': '#1e1024',
+        'greeen': '#3d871d',
+    },
+    },
   },
   plugins: [],
 }
