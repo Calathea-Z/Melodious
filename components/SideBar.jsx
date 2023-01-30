@@ -1,8 +1,9 @@
 import { HomeIcon, MagnifyingGlassCircleIcon, MusicalNoteIcon, PlusCircleIcon, LinkIcon, ArrowTrendingUpIcon } from "@heroicons/react/24/outline";
-import { signOut } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 
 const Sidebar = () => {
-    const { data: session, status}
+    const { data: session, status} = useSession();
+    console.log(session);
 
 return (
     <div className='text-greeen p-5 text-sm border-r border-gray-900'>
