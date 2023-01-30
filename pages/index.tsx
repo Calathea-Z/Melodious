@@ -9,7 +9,7 @@ const Home: NextPage = () => {
   return (
     <div className='bg-purp h-screen overflow-hidden'>
       <Head>
-        <title>Playlist AI.</title>
+        <title>Melodius</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
