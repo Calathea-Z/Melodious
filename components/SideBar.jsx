@@ -11,7 +11,7 @@ return (
             </button>
             <button className='flex items-center space-x-2 hover:text-white'>
                 <MagnifyingGlassCircleIcon className='h-5 w-5'/>
-                <p>Search</p>
+                <p>Ask For Suggestions</p>
             </button>
             <button className='flex items-center space-x-2 hover:text-white'>
                 <MusicalNoteIcon className='h-5 w-5'/>
@@ -21,7 +21,7 @@ return (
 
             <button className='flex items-center space-x-2 hover:text-white'>
                 <PlusCircleIcon className='h-5 w-5'/>
-                <p>Create Playlist</p>
+                <p>Build Playlist</p>
             </button>
             <button className='flex items-center space-x-2 hover:text-white'>
                 <ArrowTrendingUpIcon className='h-5 w-5'/>
@@ -29,9 +29,19 @@ return (
             </button>
             <button className='flex items-center space-x-2 hover:text-white'>
                 <LinkIcon className='h-5 w-5'/>
-                <p>Connect</p>
+                <p>Liked Songs</p>
             </button>
             <hr className='border-t-[0.1px] border-greeen'/>
+
+            <p className='cursor-pointer hover:text-white'>Playlist Name...</p>
+            <p className='cursor-pointer hover:text-white'>Playlist Name...</p>
+            <p className='cursor-pointer hover:text-white'>Playlist Name...</p>
+            <p className='cursor-pointer hover:text-white'>Playlist Name...</p>
+            <p className='cursor-pointer hover:text-white'>Playlist Name...</p>
+            <p className='cursor-pointer hover:text-white'>Playlist Name...</p>
+            <p className='cursor-pointer hover:text-white'>Playlist Name...</p>
+            <p className='cursor-pointer hover:text-white'>Playlist Name...</p>
+            
         </div>
     </div>
 )
