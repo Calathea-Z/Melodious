@@ -6,7 +6,7 @@ const Sidebar = () => {
     console.log(session);
 
 return (
-    <div className='text-greeen p-5 text-sm border-r border-gray-900'>
+    <div className='text-greeen p-5 text-sm border-r border-greeen overflow-y-scroll scrollbar-hide h-screen '>
         <div className='space-y-4'>
         <button className='flex items-center space-x-2 hover:text-white' onClick={() => signOut()}>
                 <p>Log Out</p>
