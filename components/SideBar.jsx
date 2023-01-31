@@ -28,7 +28,7 @@ const Sidebar = () => {
     }, [session, spotifyApi])
 
 return (
-    <div className='text-greeen p-5 text-sm border-r border-greeen overflow-y-scroll scrollbar-hide h-screen '>
+    <div className='text-greeen p-5 text-xs lg:text-sm border-r border-greeen overflow-y-scroll scrollbar-hide h-screen sm:max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex '>
         <div className='space-y-4'>
             {/* User sign out button */}
         <button className='flex items-center space-x-2 hover:text-white' onClick={() => signOut()}>

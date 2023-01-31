@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { playlistIdState, playlistState } from "../atoms/playlistAtom";
 import useSpotify from "../hooks/useSpotify";
+import Songs from '../components/Songs';
 
 
 function MainFeed() {
