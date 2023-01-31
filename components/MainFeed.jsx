@@ -1,6 +1,5 @@
 import { ChevronDoubleDownIcon } from "@heroicons/react/24/outline";
 import { useSession } from "next-auth/react"
-import Image from "next/image";
 import { useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { playlistIdState, playlistState } from "../atoms/playlistAtom";
@@ -22,7 +21,7 @@ function MainFeed() {
         .catch((err) => console.log("ERROR:", err));
     }, [spotifyApi, playlistId])
 
-    console.log(playlist)
+    // console.log(playlist)
 
 
 return (
