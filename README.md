@@ -1,4 +1,4 @@
-TECH: Google FireStore, React, Node.js, Next.js, Tailwind.CSS, Recoil.js
+TECH: React, Node.js, Next.js, Tailwind.CSS, Recoil.js
 
 APP SUMMARY: This will be an app that lets users play music from spotify and  build Spotify playlist based on suggestions given from typing prompts to the Chat GPT AI and sure that with their friends.
 
