@@ -1,11 +1,13 @@
 import { atom } from "recoil";
 
+//global state store for playlistID
 export const playlistIdState = atom({
     key: "playlistIdState",
-    default: '55RKW0km5n65C2MMPlRDk0'
+    default: "4vtUXzV3G7AKO6bLRSngLd",
 })
 
+//global state store for playlist
 export const playlistState = atom({
-    key: 'playlistState',
-    default: null
+    key: "playlistState",
+    default: null,
 })

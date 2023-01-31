@@ -17,7 +17,7 @@ const Sidebar = () => {
     const [playlists, setPlaylists] = useState([]);
     const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
 
-    console.log("Playlist", playlistId )
+    console.log("Playlist", playlistId, playlists )
     // Populates user playlists each time the session changes or the spotifyApi is called. 
     useEffect(() => {
         if (spotifyApi.getAccessToken()) {
