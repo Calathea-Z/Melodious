@@ -1,9 +1,13 @@
 import { ChevronDoubleDownIcon } from "@heroicons/react/24/outline";
 import { useSession } from "next-auth/react"
 import Image from "next/image";
+import { useRecoilState } from "recoil";
+import { playlistIdState, playlistState } from "../atoms/playlistAtom";
 
 function MainFeed() {
     const { data: session } = useSession();
+    const playlistId = useRecoilState(playlistIdState);
+    const [playlist, setPlaylist] = useRecoilState(playlistState);
 return (
     <div className='flex-grow'>
         <header className='absolute top-5 right-8'>

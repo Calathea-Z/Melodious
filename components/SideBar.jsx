@@ -1,8 +1,13 @@
+// imports icons from heroIcons
 import { HomeIcon, MagnifyingGlassCircleIcon, MusicalNoteIcon, PlusCircleIcon, LinkIcon, ArrowTrendingUpIcon } from "@heroicons/react/24/outline";
+//imports auth helper functions from Next Auth
 import { signOut, useSession } from 'next-auth/react';
 import { useState, useEffect } from "react";
 // Import custom hook function that calls spotifyApi
 import useSpotify from '../hooks/useSpotify';
+//Imports global playlist state from Recoil Slice
+import { useRecoilState } from "recoil";
+import { playlistIdState } from "../atoms/playlistAtom";
 
 
 const Sidebar = () => {
@@ -10,7 +15,7 @@ const Sidebar = () => {
     const { data: session, status} = useSession();
     // console.log(session);
     const [playlists, setPlaylists] = useState([]);
-    const [playlistId, setPlaylistId] = useState(null);
+    const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
 
     console.log("Playlist", playlistId )
     // Populates user playlists each time the session changes or the spotifyApi is called. 
@@ -25,6 +30,7 @@ const Sidebar = () => {
 return (
     <div className='text-greeen p-5 text-sm border-r border-greeen overflow-y-scroll scrollbar-hide h-screen '>
         <div className='space-y-4'>
+            {/* User sign out button */}
         <button className='flex items-center space-x-2 hover:text-white' onClick={() => signOut()}>
                 <p>Log Out</p>
             </button>
