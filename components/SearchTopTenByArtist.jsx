@@ -6,6 +6,7 @@ import { currentArtistTopTenState } from "../atoms/artistTopTenAtom";
 import { useSession } from "next-auth/react";
 import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/outline";
 import TopTenSongs from "./TopTenSongs";
+import CreatePlaylist from "../components/CreatePlaylist";
 
 
 function SearchTopTenByArtist() {
@@ -13,7 +14,6 @@ function SearchTopTenByArtist() {
     const [userInput, setUserInput] = useState(null);
     const [topTenSongList, setTopTenSongList] = useRecoilState(currentArtistTopTenState);
     const [artistID, setArtistID] = useState(null);
-    const [songList, setSongList] = useState([]);
     const spotifyApi = useSpotify();
 
     //--This stores the users search paramaters
@@ -26,8 +26,10 @@ function SearchTopTenByArtist() {
     const searchAndReturnResults = async (e) => {
         e.preventDefault();
        console.log("Search for", userInput)
-       await grabArtistID();
-       await grabTopTen();
+        await grabArtistID();
+        if(artistID) {
+            grabTopTen();
+        }
 //---This grabs the artistID of the top search results which is needed before songs can be accessed.
  }
 
@@ -39,7 +41,7 @@ function SearchTopTenByArtist() {
 })
 .catch((err) => console.log("ERR GRAB ARTIST ID FUNCTION", err));
 }
-
+//----Grab top 10 songs with specific artists ID
 const grabTopTen = async () => {spotifyApi.getArtistTopTracks(artistID, "US").then((data) => { 
     console.log("TOP TEN", data)
     console.log(data.body.tracks)
@@ -48,49 +50,33 @@ const grabTopTen = async () => {spotifyApi.getArtistTopTracks(artistID, "US").th
 .catch((err) => console.error("ERR GRAB TOP TEN FUNCTION", err))
 }
 
-    //  const topTenSongs = spotifyApi.getArtistTopTracks(artistID).then((dataTwo) => {
-    //     console.log(dataTwo)
-    //  }).catch((err) => console.log("Error in top tracks fetch", err) )
-
-    // setTopTenSongList(topTenSongs)
-
-//----Grab top 10 songs for that artists ID
- console.log(topTenSongList);   
+//  console.log(topTenSongList);   
 
 
 return (
     <div className='flex-grow h-screen overflow-y-scroll items-center justify-center scrollbar-hide'>
-         <header className='absolute top-5 right-8'>
+        <header className='absolute top-5 right-8'>
             <div className='flex items-center bg-purple-800 space-x-3 opacity-90 hover:opacity-80 text-white cursor-pointer rounded-full p-1 pr-2' onClick={() => signOut()}>
                 <img src={session?.user.image} className='rounded-full w-10 h-10'/>
                 <h2>{session?.user.name}</h2>
                 <ArrowLeftOnRectangleIcon className='w-5 h-5'/>
             </div>
         </header>
-        <div className='`flex items-end space-x-7 bg-gradient-to-b to-purp from-greeen h-80 text-white p-8`'>
+        <div className='`flex justify-between space-x-2 bg-gradient-to-b to-purp from-greeen h-80 text-white p-8`'>
+            <div className='flex border-2'>
+            <CreatePlaylist />
+            </div>
             <div className='flex flex-col'>
-                <div className='p-10'>
-                    <h1 className='font-extrabold tracking-wider font-mono text-2xl'>Search by Artist?</h1>
-                </div>
-                <div className='flex p-20 items-center justify-center'>
-                    <form className='flex space-x-20' onChange={setInput}>
-                        <input type='text' name='songValues' className='text-black border-none rounded-sm'/>
-                        <button type='button' value='|' className='button text-purple-300 text-2xl font-extrabold' onClick={searchAndReturnResults}>
-                            <PuzzlePieceIcon className='button text-2xl mb-2' />
-                            <h6>Go!</h6>
+                <div className='flex pb-1 mt-20 items-center'>
+                    <form className='flex space-x-3' onChange={setInput}>
+                        <input type='text' name='songValues' placeholder='..artist' className='text-black border-none rounded-sm opacity-25'/>
+                        <button type='button' value='|' className='button text-purple-200 text-xs font-extrabold self-end' onClick={searchAndReturnResults}>
+                            {/* <PuzzlePieceIcon className='button text-2xl mb-2' /> */}
+                            <h6>Search</h6>
                         </button>
                     </form>
                 </div>
-                {/* <div className='text-greeen px-8 flex flex-col space-y-1 pb-28'>
-                    {topTenSongList?.map((track, index) => (
-                        <div>
-                            <h1 key={track.id}>
-                            {index} {track.name} 
-                            {console.log("hi", track.name)}
-                            </h1>
-                        </div>
-                    ))}
-                </div> */}
+                <hr className='border-t-[0.1px] border-greeen'/>
                 <TopTenSongs />
                 <div>
         </div>

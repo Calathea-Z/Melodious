@@ -27,6 +27,9 @@ function TopTenSong({ order, track }) {
         </div>
         <div className='flex items-center justify-between ml-auto md:ml-0'>
             <p className='w-40 hidden md:inline'>{track.album.name}</p>
+            <div>
+                <button className='button font-semibold text-xs text-red-200 w-10'>Add to Playlist</button>
+            </div>
             <p>{time(track.duration_ms)}</p>
         </div>
     </div>

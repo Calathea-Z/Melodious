@@ -27,7 +27,7 @@ const Sidebar = () => {
                 setPlaylists(data.body.items);
             });
         }
-    }, [session, spotifyApi])
+    }, [session, spotifyApi, playlists])
 
 return (
     <div className='text-greeen p-5 text-xs lg:text-sm border-r border-greeen overflow-y-scroll scrollbar-hide h-screen sm:max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex pb-36'>
