@@ -1,14 +1,14 @@
 import { useRecoilValue } from "recoil"
 import { playlistState } from "../atoms/playlistAtom"
-import Song from './Song'
+import PlaylistSong from './PlaylistSong'
 
-function Songs() {
+function PlaylistSongs() {
     const playlist=useRecoilValue(playlistState);
   return (
     <div className='text-greeen px-8 flex flex-col space-y-1 pb-28'>
         {playlist?.tracks.items.map((track, index) => (
             <div>
-                <Song key={track.track.id} track={track} order={index}  />
+                <PlaylistSong key={track.track.id} track={track} order={index}  />
             </div>
 
         ))}
@@ -16,4 +16,4 @@ function Songs() {
   )
 }
 
-export default Songs
+export default PlaylistSongs

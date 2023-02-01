@@ -5,7 +5,7 @@ import { useRecoilState } from "recoil";
 import { currentArtistTopTenState } from "../atoms/artistTopTenAtom";
 import { useSession } from "next-auth/react";
 import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/outline";
-import Songs from "./Songs";
+import TopTenSongs from "./TopTenSongs";
 
 
 function SearchTopTenByArtist() {
@@ -69,7 +69,7 @@ return (
         </header>
         <div className='`flex items-end space-x-7 bg-gradient-to-b to-purp from-greeen h-80 text-white p-8`'>
             <div className='flex flex-col'>
-                <div className=''>
+                <div className='p-10'>
                     <h1 className='font-extrabold tracking-wider font-mono text-2xl'>Search by Artist?</h1>
                 </div>
                 <div className='flex p-20 items-center justify-center'>
@@ -91,8 +91,8 @@ return (
                         </div>
                     ))}
                 </div> */}
+                <TopTenSongs />
                 <div>
-            <Songs type={topTenSongList} />
         </div>
             </div>
         </div>

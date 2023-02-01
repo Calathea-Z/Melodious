@@ -3,7 +3,7 @@ import useSpotify from '../hooks/useSpotify';
 import time from '../lib/time';
 import { isPlayingState, currentTrackIdState } from '../atoms/songAtom';
 
-function Song({ order, track }) {
+function PlaylistSong({ order, track }) {
     const spotifyApi = useSpotify();
     const [currentTrackId, setCurrentTrackId] = useRecoilState(currentTrackIdState);
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
@@ -33,4 +33,4 @@ function Song({ order, track }) {
   )
 }
 
-export default Song
+export default PlaylistSong

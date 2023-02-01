@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { playlistIdState, playlistState } from "../atoms/playlistAtom";
 import useSpotify from "../hooks/useSpotify";
-import Songs from '../components/Songs';
+import Songs from './PlaylistSongs';
 import { signOut } from "next-auth/react";
 
 
