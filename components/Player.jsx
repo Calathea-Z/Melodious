@@ -63,7 +63,7 @@ return (
             </div>
         </div>
         <div className='flex items-center justify-evenly'>
-                <BeakerIcon className='button' />
+                {/* <BeakerIcon className='button' onClick={() => spotifyApi.setShuffle()} /> */}
                 <BackwardIcon className='button' onClick={() => spotifyApi.skipToPrevious()} />
                 {isPlaying ? (
                     <PauseCircleIcon className='button' onClick={handlePlayPause} />
@@ -71,7 +71,7 @@ return (
                     <PlayCircleIcon className='button' onClick={handlePlayPause} />
                 )}
                 <ForwardIcon className='button' onClick={() => spotifyApi.skipToNext} />
-                <ArrowPathIcon className='button' />
+                {/* <ArrowPathIcon className='button' onClick={() => spotifyApi.setRepeat()} /> */}
             </div>
         </div>
 )}
