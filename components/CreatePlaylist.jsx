@@ -1,19 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useSpotify from '../hooks/useSpotify';
+import { createdPlaylistIdState } from '../atoms/playlistAtom';
+import { useRecoilState } from 'recoil';
 
 function CreatePlaylist() {
     const spotifyApi = useSpotify();
     const [playlistTitle, setPlaylistTitle] = useState(null);
-
+    const [playlistId, setPlaylistId] = useRecoilState(createdPlaylistIdState);
+    
     const setInput = (e) => {
         const input = e.target.value
         setPlaylistTitle(input)
         console.log(playlistTitle);
     }
 
-    const newPlaylist = () => {
-        spotifyApi.createPlaylist(playlistTitle)
-        console.log("Playlist Created",)
+    const newPlaylist = async () => {
+        const list = spotifyApi.createPlaylist(playlistTitle)
+        console.log(list)
+        spotifyApi.getUserPlaylists().then((data) => {
+            setPlaylistId(data.body.items[0].id);
+        });
     }
 
   return (

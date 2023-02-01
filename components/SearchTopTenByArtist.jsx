@@ -1,4 +1,4 @@
-import { PuzzlePieceIcon } from "@heroicons/react/24/solid"
+import { signOut } from "next-auth/react";
 import { useState } from "react"
 import useSpotify from "../hooks/useSpotify";
 import { useRecoilState } from "recoil";
@@ -49,9 +49,6 @@ const grabTopTen = async () => {spotifyApi.getArtistTopTracks(artistID, "US").th
 })
 .catch((err) => console.error("ERR GRAB TOP TEN FUNCTION", err))
 }
-
-//  console.log(topTenSongList);   
-
 
 return (
     <div className='flex-grow h-screen overflow-y-scroll items-center justify-center scrollbar-hide'>
