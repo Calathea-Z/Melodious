@@ -61,7 +61,7 @@ export default function GeneratePlaylist() {
                 <ArrowLeftOnRectangleIcon className='w-5 h-5'/>
             </div>
         </header>
-      <main className='pt-4 pl-1 pb-0 w-9/12 flex flex-col space-y-10 text-yellow-400 font-mono text-4xl tracking-wide leading-10'>
+      <main className='pt-4 pl-1 pb-0 mb-0 w-9/12 flex flex-col space-y-10 text-yellow-400 font-mono text-4xl tracking-wide leading-10'>
         <Typewriter dataToRotate={[
           [
             {type: 'word', text: "Enter a prompt: Be as specific or abstract as you'd like!"}
@@ -78,16 +78,26 @@ export default function GeneratePlaylist() {
               onChange={(e) => setUserInput(e.target.value)}
               className='text-xs text-blue-600 rounded-md w-[300px]'
             />
-            <button className=' rounded-md border-greeen border-solid border-2 opacity-75 cursor-pointer hover:scale-125 transition transform duration-100 ease-out font-bold text-xs' type="submit" value="Generate">Generate
+            <button className=' rounded-md border-greeen border-solid border-2 opacity-75 cursor-pointer hover:scale-125 transition transform duration-100 ease-out font-bold text-xs  hover:bg-yellow-400 hover:text-white ' type="submit" value="Generate">Generate
             </button>
           </form>
-          <div className='text-greeen flex-grow flex-col  w-24 h-2 space-y-1 pb-28 font-serif text-[13px] tracking-tight leading-snug mt-0'>
+          <div className='text-greeen flex flex-wrap space-y-1 pb-28 font-serif text-[13px] tracking-tight leading-snug mt-0'>
+            {/* <p className='text-yellow-400 font-mono text-md '>Select Your Artist</p> */}
+            <div className='text-yellow-400 font-mono text-md '>
+            <Typewriter dataToRotate={[
+          [
+            {type: 'word', text: "Select Your Artist"}
+          ],
+        ]} />
+        </div>
+            <div className="flex flex-wrap w-96">
             {result?.map((result, index) => (
-                <div key={index}>
-                  <button value={result} type='button' onClick={handleClick}>{result}</button>
+                <div className='flex space-x-2 space-y-2' key={index}>
+                  <button className='border rounded-lg p-2 border-yellow-300  opacity-80 hover:bg-yellow-400 hover:text-white transition transform duration-100 ease-out' value={result} type='button' onClick={handleClick}>{result}</button>
                   
                 </div>
             ))}
+            </div>
           </div>
         </div>
       </main>
