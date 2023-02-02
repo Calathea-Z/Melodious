@@ -24,7 +24,7 @@ function TopTenSong({ order, track }) {
         setSongUri(track.uri)
         addSongToPlaylist()
     }
-    console.log("Hi", songUri);
+    // console.log("Hi", songUri);
 
     const addSongToPlaylist = async () => {
         const addedSong = spotifyApi.addTracksToPlaylist(newPlaylistId, [songUri])

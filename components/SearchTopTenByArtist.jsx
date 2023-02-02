@@ -21,7 +21,7 @@ function SearchTopTenByArtist() {
         const input = e.target.value
         setUserInput(input)
 }
-    console.log(userInput);
+    // console.log(userInput);
  //----This returns to the top 10 results based on the search parameters
     const searchAndReturnResults = async (e) => {
         e.preventDefault();

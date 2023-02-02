@@ -4,12 +4,16 @@ import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/solid";
 import useSpotify from "../hooks/useSpotify";
 import Typewriter from "react-typewriter-animate";
 import "react-typewriter-animate/dist/Typewriter.css";
+import { useRecoilState } from "recoil";
+import { generatedListState } from "../atoms/generatorAtom";
+import { useEffect } from "react";
 
 export default function GeneratePlaylist() {
   const [userInput, setUserInput] = useState("");
-  const [result, setResult] = useState([]);
+  const [result, setResult] = useRecoilState(generatedListState);
   const { data: session } = useSession();
-  const spotifyApi = useSpotify();
+  const [currentArtistSelection, setCurrentArtistSelection] = useState(null);
+  // const spotifyApi = useSpotify();
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -27,9 +31,9 @@ export default function GeneratePlaylist() {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
       const responseToFormat = data.result
-      console.log(responseToFormat)
+      // console.log(responseToFormat)
       const formattedResponse = responseToFormat.split('~');
-      console.log(formattedResponse);
+      // console.log(formattedResponse);
       setResult(formattedResponse);
       setUserInput("");
     } catch(error) {
@@ -37,7 +41,16 @@ export default function GeneratePlaylist() {
       alert(error.message);
     }
   }
-  console.log("End Product", result)
+  // console.log("End Product", result)
+
+  const handleClick = (e) => {
+    setCurrentArtistSelection(e.target.value)
+  }
+
+  useEffect(() => {
+    console.log("current artist selection", currentArtistSelection)
+  },[currentArtistSelection]);
+
 
   return (
     <div className='flex-grow h-screen overflow-y-scroll items-center justify-center scrollbar-hide'>
@@ -51,7 +64,7 @@ export default function GeneratePlaylist() {
       <main className='pt-4 pl-1 pb-0 w-9/12 flex flex-col space-y-10 text-yellow-400 font-mono text-4xl tracking-wide leading-10'>
         <Typewriter dataToRotate={[
           [
-            {type: 'word', text: "Enter a prompt: be as specific or abstract as you'd like!"}
+            {type: 'word', text: "Enter a prompt: Be as specific or abstract as you'd like!"}
           ],
         ]} />
         <hr className='border-t-[0.1px] border-greeen'/>
@@ -71,15 +84,13 @@ export default function GeneratePlaylist() {
           <div className='text-greeen flex-grow flex-col  w-24 h-2 space-y-1 pb-28 font-serif text-[13px] tracking-tight leading-snug mt-0'>
             {result?.map((result, index) => (
                 <div key={index}>
-                  <div>{result}</div>
+                  <button value={result} type='button' onClick={handleClick}>{result}</button>
+                  
                 </div>
             ))}
           </div>
         </div>
       </main>
-      <div>
-        <h1>SONG POPULATION HERE</h1>
-      </div>
     </div>
   );
 }

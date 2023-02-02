@@ -1,6 +1,7 @@
-import Sidebar from "../components/SideBar"
-import Player from "../components/Player"
-import GeneratePlaylist from "../components/GeneratePlaylist"
+import Sidebar from "../components/SideBar";
+import Player from "../components/Player";
+import GeneratePlaylist from "../components/GeneratePlaylist";
+import SearchTopTenByArtist from "../components/SearchTopTenByArtist";
 
 function Suggestions() {
     return (

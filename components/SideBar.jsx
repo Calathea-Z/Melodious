@@ -14,13 +14,13 @@ import { useRouter } from 'next/router';
 const Sidebar = () => {
     const router = useRouter();
     const spotifyApi = useSpotify();
-    const { data: session, status} = useSession();
-    // console.log(session);
+    const { data: session} = useSession();
+    console.log(session);
     const [playlists, setPlaylists] = useState([]);
     const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
 
-    // console.log("Playlist", playlistId, playlists )
-    // Populates user playlists each time the session changes or the spotifyApi is called. 
+//------ Populates user playlists each time the session changes or the spotifyApi is called. 
+
     useEffect(() => {
         if (spotifyApi.getAccessToken()) {
             spotifyApi.getUserPlaylists().then((data) => {
