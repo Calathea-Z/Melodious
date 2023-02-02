@@ -3,6 +3,7 @@ import useSpotify from '../hooks/useSpotify';
 import time from '../lib/time';
 import { isPlayingState, currentTrackIdState } from '../atoms/songAtom';
 import { createdPlaylistIdState, songUriState } from '../atoms/playlistAtom';
+import { useEffect } from 'react';
 
 function TopTenSong({ order, track }) {
     const spotifyApi = useSpotify();

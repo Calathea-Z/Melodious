@@ -22,6 +22,11 @@ function CreatePlaylist() {
         });
     }
 
+    useEffect(() => {
+        newPlaylist();
+      
+    }, [ playlistTitle])
+
 return (
     <div className='flex'>
         <div className='flex flex-col'>

@@ -1,7 +1,7 @@
 // imports icons from heroIcons
 import { HomeIcon, MagnifyingGlassCircleIcon, MusicalNoteIcon, PlusCircleIcon, LinkIcon, ArrowTrendingUpIcon } from "@heroicons/react/24/outline";
 //imports auth helper functions from Next Auth
-import { signOut, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import { useState, useEffect } from "react";
 // Import custom hook function that calls spotifyApi
 import useSpotify from '../hooks/useSpotify';
