@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function GeneratePlaylist() {
   const [userInput, setUserInput] = useState("");
-  const [result, setResult] = useState();
+  const [result, setResult] = useState([]);
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -19,14 +19,18 @@ export default function GeneratePlaylist() {
       if (response.status !== 200) {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
-
-      setResult(data.result);
+      const responseToFormat = data.result
+      console.log(responseToFormat)
+      const formattedResponse = responseToFormat.split('~');
+      console.log(formattedResponse);
+      setResult(formattedResponse);
       setUserInput("");
     } catch(error) {
       console.error(error);
       alert(error.message);
     }
   }
+  console.log("End Product", result)
 
   return (
     <div>
@@ -42,7 +46,14 @@ export default function GeneratePlaylist() {
           />
           <input className='text-greeen' type="submit" value="Generate Suggestions" />
         </form>
-        <div className='text-greeen flex p-2 text-3xl font-bold'>{result}</div>
+        {/* <div className='text-greeen flex p-2 text-3xl font-bold'>{result}</div> */}
+        <div className='text-greeen px-8 flex flex-col space-y-1 pb-28'>
+          {result?.map((result, index) => (
+              <div key={index}>
+                 <ul>{result}</ul>
+              </div>
+          ))}
+      </div>
       </main>
     </div>
   );
