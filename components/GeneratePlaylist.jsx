@@ -30,8 +30,8 @@ export default function GeneratePlaylist() {
 
   return (
     <div>
-      <main className={styles.main}>
-        <h6>Enter in a prompt</h6>
+      <main className='p-5 fles'>
+        <h6 className='text-greeen'>Enter in a prompt</h6>
         <form onSubmit={onSubmit}>
           <input
             type="text"
@@ -40,9 +40,9 @@ export default function GeneratePlaylist() {
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
           />
-          <input type="submit" value="Generate Suggestions" />
+          <input className='text-greeen' type="submit" value="Generate Suggestions" />
         </form>
-        <div>{result}</div>
+        <div className='text-greeen flex p-2 text-3xl font-bold'>{result}</div>
       </main>
     </div>
   );

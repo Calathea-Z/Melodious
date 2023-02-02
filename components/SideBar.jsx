@@ -41,24 +41,11 @@ return (
                     <MagnifyingGlassCircleIcon className='h-5 w-5'/>
                     <p>Ask For Suggestions</p>
                 </button>
-            {/* <button className='flex items-center space-x-2 hover:text-white'>
-                <MusicalNoteIcon className='h-5 w-5'/>
-                <p>Your Library</p>
-            </button> */}
-
             <hr className='border-t-[0.1px] border-greeen pb-2'/>
                 <button className='flex items-center space-x-2 hover:text-white' onClick={() => router.push('/buildplaylist')}>
                     <PlusCircleIcon className='h-5 w-5'/>
                     <p>Build Playlist</p>
                 </button>
-            {/* <button className='flex items-center space-x-2 hover:text-white'>
-                <ArrowTrendingUpIcon className='h-5 w-5'/>
-                <p>Trending</p>
-            </button> */}
-            {/* <button className='flex items-center space-x-2 hover:text-white'>
-                <LinkIcon className='h-5 w-5'/>
-                <p>Liked Songs</p>
-            </button> */}
             <hr className='border-t-[0.1px] border-greeen'/>
             {playlists.map((playlist) => (
                 <p key={playlist.id} className='cursor-pointer hover:text-white' onClick={()=> setPlaylistId(playlist.id)}>

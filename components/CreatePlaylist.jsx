@@ -22,7 +22,7 @@ function CreatePlaylist() {
         });
     }
 
-  return (
+return (
     <div className='flex'>
         <div className='flex flex-col'>
             <h6>Create a New Playlist</h6>
@@ -33,7 +33,7 @@ function CreatePlaylist() {
             </form>  
         </div>
     </div>
-  )
+)
 }
 
 export default CreatePlaylist

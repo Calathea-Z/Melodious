@@ -60,7 +60,7 @@ return (
             </div>
         </header>
         <div className='`flex justify-between space-x-2 bg-gradient-to-b to-purp from-greeen h-80 text-white p-8`'>
-            <div className='flex border-2'>
+            <div className='flex'>
             <CreatePlaylist />
             </div>
             <div className='flex flex-col'>
@@ -68,7 +68,6 @@ return (
                     <form className='flex space-x-3' onChange={setInput}>
                         <input type='text' name='songValues' placeholder='..artist' className='text-black border-none rounded-sm opacity-25'/>
                         <button type='button' value='|' className='button text-purple-200 text-xs font-extrabold self-end' onClick={searchAndReturnResults}>
-                            {/* <PuzzlePieceIcon className='button text-2xl mb-2' /> */}
                             <h6>Search</h6>
                         </button>
                     </form>

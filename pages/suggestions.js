@@ -1,17 +1,15 @@
-import Player from "../components/Player";
-import Sidebar from "../components/SideBar";
-import SearchTopTenByArtist from "../components/SearchTopTenByArtist";
+import Sidebar from "../components/SideBar"
+import Player from "../components/Player"
+import GeneratePlaylist from "../components/GeneratePlaylist"
 
-
-function BuildPlaylist() {
-    
-return (
+function Suggestions() {
+    return (
 
     <div className='bg-purp h-screen overflow-hidden'>
 {/* --- Side Nav / Playlist Input */}
         <main className='flex'>
             <Sidebar />
-            <SearchTopTenByArtist />
+            <GeneratePlaylist />
         </main>
 {/* ---Music Player */}
         <div className='sticky bottom-0'>
@@ -21,4 +19,4 @@ return (
 )
 }
 
-export default BuildPlaylist
+export default Suggestions

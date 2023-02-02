@@ -30,7 +30,7 @@ export default async function (req, res) {
       model: "text-davinci-003",
       prompt: generatePrompt(bands),
       temperature: 0.2,
-      max_tokens: 800,
+      max_tokens: 150,
       n: 3,
     });
     res.status(200).json({ result: completion.data.choices[0].text });
@@ -49,11 +49,14 @@ export default async function (req, res) {
   }
 }
 
-function generatePrompt(animal) {
-  return `Please give me suggestions of new music to listen to in the form of a list of real bands based only on these words or feelings: ${animal}. Put them in the format of:
-  1.(Artist 1) - is a " "
-  2.(Artist 2 ) - They are " "
-  Include a short blurb about what they are like.
-  If a user inputs an actual band please don't repeat it back in the list
-  Also please don't print any incomplete responses - if the token limit isn't long enough just leave of the last band please.`;
+function generatePrompt(bands) {
+  return `Please give me suggestions of new music to listen to in the form of a list of a max of five bands based on these words or feelings: ${bands}. Can you please leave a lot of blank space between each suggestion?
+  1.(Artist 1) - "two word summary"
+
+  2.(Artist 2 ) - "two word summary"
+
+  3.(Artist 3 ) - "two word summary"
+
+  only a short summary of each band three words max.
+`;
 }
