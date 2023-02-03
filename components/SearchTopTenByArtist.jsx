@@ -50,8 +50,7 @@ const grabTopTen = async () => {spotifyApi.getArtistTopTracks(artistID, "US").th
 }
 
 useEffect (() => {
-
-grabTopTen();
+if (artistID) {grabTopTen();}
 },[artistID])
 
 return (

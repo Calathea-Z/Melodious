@@ -19,7 +19,7 @@ export default function GeneratePlaylist() {
   const { data: session } = useSession();
   const [currentArtistSelection, setCurrentArtistSelection] = useState(null);
   const [artistID, setArtistID] = useState(null);
-  const [songUri, setSongUri] = useRecoilState(songUriState);
+  // const [songUri, setSongUri] = useRecoilState(songUriState);
   const [topTenSongList, setTopTenSongList] = useRecoilState(currentArtistTopTenState);
   const spotifyApi = useSpotify();
 
@@ -71,10 +71,6 @@ const grabTopTen = async () => {spotifyApi.getArtistTopTracks(artistID, "US").th
 })
 .catch((err) => console.error("ERR GRAB TOP TEN FUNCTION", err))
 }
-
-  // useEffect(() => {
-  //   console.log("current artist selection", currentArtistSelection)
-  // },[currentArtistSelection]);
 
   useEffect (() => {
     if(artistID){grabTopTen()}
