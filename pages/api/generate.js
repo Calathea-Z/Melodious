@@ -50,7 +50,7 @@ export default async function (req, res) {
 }
 
 function generatePrompt(bands) {
-  return `Please give me suggestions of new music to listen to in the form of a list of a max of five bands based on these words or feelings: ${bands}. Tell me where they are from also with the city and the country. Please include the squiggly line after each suggestion. Please leave the squiggly of the last item.
+  return `Please give me suggestions of new music to listen to in the form of a list of a max of five bands based on these words or feelings: ${bands}. Tell me where they are from also with the city and the country. Please include the squiggly line after each suggestion except for the last one.
   1.(Artist 1) - two word summary - location ~
 
   2.(Artist 2 ) - two word summary - location ~
