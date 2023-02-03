@@ -51,10 +51,7 @@ export default function GeneratePlaylist() {
     let queryReformOne = query.substring(3)
     let queryReformTwo = queryReformOne.substring(0, queryReformOne.indexOf("-"))
     setCurrentArtistSelection(queryReformTwo)
-    await grabArtistID();
-    if (artistID){
-    grabTopTen();
-    }
+    grabArtistID();
   }
 
   const grabArtistID = () => {spotifyApi.searchArtists(currentArtistSelection).then((data) => { 
@@ -74,9 +71,13 @@ const grabTopTen = async () => {spotifyApi.getArtistTopTracks(artistID, "US").th
 .catch((err) => console.error("ERR GRAB TOP TEN FUNCTION", err))
 }
 
-  useEffect(() => {
-    console.log("current artist selection", currentArtistSelection)
-  },[currentArtistSelection]);
+  // useEffect(() => {
+  //   console.log("current artist selection", currentArtistSelection)
+  // },[currentArtistSelection]);
+
+  useEffect (() => {
+    if(artistID){grabTopTen()}
+    },[artistID, currentArtistSelection])
 
   return (
     <div className='flex-grow h-screen overflow-y-scroll items-center justify-center scrollbar-hide'>
