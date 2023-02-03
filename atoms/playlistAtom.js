@@ -24,7 +24,7 @@ export const songUriState = atom({
 
 export const createdPlaylistIdState = atom({
     key: "createdPlaylistIdState",
-    default: null,
+    default: "null",
 })
 
 // "spotify:track:0njoGyz7YLEOqgwYP9QOwn"

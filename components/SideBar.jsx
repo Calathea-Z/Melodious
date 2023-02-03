@@ -10,6 +10,7 @@ import { useRecoilState } from "recoil";
 import { playlistIdState } from "../atoms/playlistAtom";
 import { allPlaylistsState} from "../atoms/playlistAtom";
 import { useRouter } from 'next/router';
+import { modalState } from '../atoms/modalAtom';
 
 
 const Sidebar = () => {
@@ -19,7 +20,7 @@ const Sidebar = () => {
     console.log(session);
     const [playlists, setPlaylists] = useRecoilState(allPlaylistsState);
     const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
-
+    const [open, setOpen] = useRecoilState(modalState);
 //------ Populates user playlists each time the session changes or the spotifyApi is called. 
 
     useEffect(() => {
@@ -29,6 +30,8 @@ const Sidebar = () => {
             });
         }
     }, [session, spotifyApi])
+
+    
 
 return (
     <div className='text-greeen p-5 text-xs lg:text-sm border-r border-greeen overflow-y-scroll scrollbar-hide h-screen sm:max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex pb-36'>
@@ -45,11 +48,14 @@ return (
             <hr className='border-t-[0.1px] border-greeen pb-2'/>
                 <button className='flex items-center space-x-2 hover:text-white' onClick={() => router.push('/buildplaylist')}>
                     <PlusCircleIcon className='h-5 w-5'/>
-                    <p>Build Playlist</p>
+                    <p>Search by Artist</p>
                 </button>
             <hr className='border-t-[0.1px] border-greeen'/>
+            <button className='flex items-center space-x-2 hover:text-white' onClick={()=> setOpen(true)}>
+                <p>Create New Playlist</p>
+            </button>
             {playlists.map((playlist) => (
-                <p key={playlist.id} className='cursor-pointer hover:text-white' onClick={()=> setPlaylistId(playlist.id)}>
+                <p key={playlist.id} className='cursor-pointer hover:text-white' onClick={()=>{setPlaylistId(playlist.id)}}>
                     {playlist.name}
                 </p>
             ))}

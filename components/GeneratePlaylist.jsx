@@ -9,6 +9,7 @@ import { generatedListState } from "../atoms/generatorAtom";
 import { useEffect } from "react";
 import TopTenSongs from "./TopTenSongs";
 import { currentArtistTopTenState } from "../atoms/artistTopTenAtom";
+import { songUriState } from "../atoms/playlistAtom";
 
 export default function GeneratePlaylist() {
   const [userInput, setUserInput] = useState("");
@@ -16,6 +17,7 @@ export default function GeneratePlaylist() {
   const { data: session } = useSession();
   const [currentArtistSelection, setCurrentArtistSelection] = useState(null);
   const [artistID, setArtistID] = useState(null);
+  const [songUri, setSongUri] = useRecoilState(songUriState);
   const [topTenSongList, setTopTenSongList] = useRecoilState(currentArtistTopTenState);
   const spotifyApi = useSpotify();
 
