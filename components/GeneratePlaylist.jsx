@@ -7,12 +7,16 @@ import "react-typewriter-animate/dist/Typewriter.css";
 import { useRecoilState } from "recoil";
 import { generatedListState } from "../atoms/generatorAtom";
 import { useEffect } from "react";
+import TopTenSongs from "./TopTenSongs";
+import { currentArtistTopTenState } from "../atoms/artistTopTenAtom";
 
 export default function GeneratePlaylist() {
   const [userInput, setUserInput] = useState("");
   const [result, setResult] = useRecoilState(generatedListState);
   const { data: session } = useSession();
   const [currentArtistSelection, setCurrentArtistSelection] = useState(null);
+  const [artistID, setArtistID] = useState(null);
+  const [topTenSongList, setTopTenSongList] = useRecoilState(currentArtistTopTenState);
   const spotifyApi = useSpotify();
 
   async function onSubmit(event) {
@@ -40,9 +44,33 @@ export default function GeneratePlaylist() {
     }
   }
 
-  const handleClick = (e) => {
-    setCurrentArtistSelection(e.target.value)
+  const handleClick = async (e) => {
+    let query = e.target.value;
+    let queryReformOne = query.substring(3)
+    let queryReformTwo = queryReformOne.substring(0, queryReformOne.indexOf("-"))
+    setCurrentArtistSelection(queryReformTwo)
+    await grabArtistID();
+    if (artistID){
+    grabTopTen();
+    }
   }
+
+  const grabArtistID = () => {spotifyApi.searchArtists(currentArtistSelection).then((data) => { 
+    console.log(data)
+    console.log("Artist Name :", data.body.artists.items[0].name)
+    console.log("Aritst ID :", data.body.artists.items[0].id)
+    setArtistID(data.body.artists.items[0].id)
+})
+.catch((err) => console.log("ERR GRAB ARTIST ID FUNCTION", err));
+}
+
+const grabTopTen = async () => {spotifyApi.getArtistTopTracks(artistID, "US").then((data) => { 
+  console.log("TOP TEN", data)
+  console.log(data.body.tracks)
+  setTopTenSongList(data.body.tracks)
+})
+.catch((err) => console.error("ERR GRAB TOP TEN FUNCTION", err))
+}
 
   useEffect(() => {
     console.log("current artist selection", currentArtistSelection)
@@ -65,8 +93,8 @@ export default function GeneratePlaylist() {
              maxTypeSpeed: 500,}
           ],
         ]} />
-        <hr className='border-t-[0.1px] border-greeen'/>
-        <div className="flex flex-col  md:flex-row h-10 space-y-10 md:space-y-0 space-x-10">
+        <hr className='border-t-[0.1px] border-blue-600'/>
+        <div className="flex flex-col md:flex-row h-10 space-y-10 md:space-y-0 space-x-10 mb-">
           <form onSubmit={onSubmit} className='flex space-x-4'>
             <input
               type="text"
@@ -100,6 +128,11 @@ export default function GeneratePlaylist() {
         </div>
       </div>
     </main>
+    {(result)?<div>
+      <hr className='border-t-[0.1px] border-pink-400 mt-48'/>
+      <TopTenSongs />
+    </div> : <p> </p> 
+    }
   </div>
   );
 }
