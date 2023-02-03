@@ -9,6 +9,9 @@ import { generatedListState } from "../atoms/generatorAtom";
 import { useEffect } from "react";
 import TopTenSongs from "./TopTenSongs";
 import { currentArtistTopTenState } from "../atoms/artistTopTenAtom";
+import { songUriState } from "../atoms/playlistAtom";
+
+
 
 export default function GeneratePlaylist() {
   const [userInput, setUserInput] = useState("");
@@ -16,6 +19,7 @@ export default function GeneratePlaylist() {
   const { data: session } = useSession();
   const [currentArtistSelection, setCurrentArtistSelection] = useState(null);
   const [artistID, setArtistID] = useState(null);
+  // const [songUri, setSongUri] = useRecoilState(songUriState);
   const [topTenSongList, setTopTenSongList] = useRecoilState(currentArtistTopTenState);
   const spotifyApi = useSpotify();
 
@@ -49,10 +53,6 @@ export default function GeneratePlaylist() {
     let queryReformOne = query.substring(3)
     let queryReformTwo = queryReformOne.substring(0, queryReformOne.indexOf("-"))
     setCurrentArtistSelection(queryReformTwo)
-    await grabArtistID();
-    if (artistID){
-    grabTopTen();
-    }
   }
 
   const grabArtistID = () => {spotifyApi.searchArtists(currentArtistSelection).then((data) => { 
@@ -72,9 +72,13 @@ const grabTopTen = async () => {spotifyApi.getArtistTopTracks(artistID, "US").th
 .catch((err) => console.error("ERR GRAB TOP TEN FUNCTION", err))
 }
 
-  useEffect(() => {
-    console.log("current artist selection", currentArtistSelection)
-  },[currentArtistSelection]);
+  useEffect (() => {
+    if(artistID){grabTopTen()}
+    },[artistID])
+
+  useEffect (() => {
+    grabArtistID()
+  },[currentArtistSelection])
 
   return (
     <div className='flex-grow h-screen overflow-y-scroll items-center justify-center scrollbar-hide'>
@@ -89,12 +93,12 @@ const grabTopTen = async () => {spotifyApi.getArtistTopTracks(artistID, "US").th
         <Typewriter dataToRotate={[
           [
             {type: 'word',
-             text: "Enter a prompt: Be as specific or abstract as you'd like!",
-             maxTypeSpeed: 500,}
+            text: "Enter a prompt: Be as specific or abstract as you'd like!",
+            maxTypeSpeed: 500,}
           ],
         ]} />
         <hr className='border-t-[0.1px] border-blue-600'/>
-        <div className="flex flex-col md:flex-row h-10 space-y-10 md:space-y-0 space-x-10 mb-">
+        <div className="flex flex-col justify-items-center md: md:flex-row h-10 space-y-10 md:space-y-0 space-x-10 mb-">
           <form onSubmit={onSubmit} className='flex space-x-4'>
             <input
               type="text"
@@ -129,7 +133,7 @@ const grabTopTen = async () => {spotifyApi.getArtistTopTracks(artistID, "US").th
       </div>
     </main>
     {(result)?<div>
-      <hr className='border-t-[0.1px] border-pink-400 mt-48'/>
+      <hr className='border-t-[0.1px] border-pink-400 md:mt-48 mt-72'/>
       <TopTenSongs />
     </div> : <p> </p> 
     }
