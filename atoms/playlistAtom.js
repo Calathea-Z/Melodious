@@ -11,6 +11,11 @@ export const playlistState = atom({
     key: "playlistState",
     default: null,
 })
+
+export const allPlaylistsState = atom({
+    key: "allPlaylistsState",
+    default: [],
+})
 //global state store for currently selected song URI
 export const songUriState = atom({
     key: "songUriState",

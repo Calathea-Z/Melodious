@@ -42,11 +42,11 @@ function TopTenSong({ order, track }) {
             </div>
         </div>
         <div className='flex items-center justify-between ml-auto md:ml-0'>
-            <p className='w-40 hidden md:inline'>{track.album.name}</p>
+            <p className='w-40 hidden md:inline text-white'>{track.album.name}</p>
             <div>
-                <button className='button font-semibold text-xs text-red-200' onClick={handleSetSongURI}>Add to Playlist</button>
+                <button className='rounded-lg p-2 border-yellow-300  opacity-80 hover:bg-yellow-400 hover:text-white transition transform duration-100 ease-out' onClick={handleSetSongURI}>Add to Playlist</button>
             </div>
-            <p>{time(track.duration_ms)}</p>
+            <p className='text-white'>{time(track.duration_ms)}</p>
         </div>
     </div>
   )

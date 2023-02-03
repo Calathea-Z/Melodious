@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import useSpotify from '../hooks/useSpotify';
 import { createdPlaylistIdState } from '../atoms/playlistAtom';
 import { useRecoilState } from 'recoil';
+// import { Session } from 'inspector';
 
 function CreatePlaylist() {
     const spotifyApi = useSpotify();
@@ -14,9 +15,8 @@ function CreatePlaylist() {
         console.log(playlistTitle);
     }
 
-    const newPlaylist = async () => {
-        const list = spotifyApi.createPlaylist(playlistTitle)
-        console.log(list)
+    const newPlaylist = () => {
+        spotifyApi.createPlaylist(playlistTitle)
         spotifyApi.getUserPlaylists().then((data) => {
             setPlaylistId(data.body.items[0].id);
         });
@@ -24,8 +24,7 @@ function CreatePlaylist() {
 
     useEffect(() => {
         newPlaylist();
-      
-    }, [ playlistTitle])
+    }, [])
 
 return (
     <div className='flex'>
