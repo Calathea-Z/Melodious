@@ -8,6 +8,7 @@ import useSpotify from '../hooks/useSpotify';
 //Imports global playlist state from Recoil Slice
 import { useRecoilState } from "recoil";
 import { playlistIdState } from "../atoms/playlistAtom";
+import { allPlaylistsState} from "../atoms/playlistAtom";
 import { useRouter } from 'next/router';
 
 
@@ -16,7 +17,7 @@ const Sidebar = () => {
     const spotifyApi = useSpotify();
     const { data: session} = useSession();
     console.log(session);
-    const [playlists, setPlaylists] = useState([]);
+    const [playlists, setPlaylists] = useRecoilState(allPlaylistsState);
     const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
 
 //------ Populates user playlists each time the session changes or the spotifyApi is called. 
