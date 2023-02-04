@@ -1,11 +1,7 @@
-// imports icons from heroIcons
 import { HomeIcon, MagnifyingGlassCircleIcon, PlusCircleIcon, CodeBracketSquareIcon } from "@heroicons/react/24/outline";
-//imports auth helper functions from Next Auth
 import { useSession } from 'next-auth/react';
-import { useState, useEffect } from "react";
-// Import custom hook function that calls spotifyApi
+import { useEffect } from "react";
 import useSpotify from '../hooks/useSpotify';
-//Imports global playlist state from Recoil Slice
 import { useRecoilState } from "recoil";
 import { playlistIdState } from "../atoms/playlistAtom";
 import { allPlaylistsState} from "../atoms/playlistAtom";
@@ -21,7 +17,8 @@ const Sidebar = () => {
     const [playlists, setPlaylists] = useRecoilState(allPlaylistsState);
     const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
     const [open, setOpen] = useRecoilState(modalState);
-//------ Populates user playlists each time the session changes or the spotifyApi is called. 
+
+//------------Populates user playlists each time the session changes or the spotifyApi is called. 
 
     useEffect(() => {
         if (spotifyApi.getAccessToken()) {
