@@ -14,6 +14,7 @@
     "openai": "^3.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-simple-typewriter": "^5.0.1",
     "react-spinners": "^0.13.8",
     "react-typewriter-animate": "^1.2.3",
     "recoil": "^0.7.6",

@@ -14,33 +14,33 @@ return (
         <Typewriter dataToRotate={[
           [
             {type: 'word',
-             text: "Build the playlist of your dreams 📻",
-             maxTypeSpeed: 1500,}
+            text: "Build the playlist of your dreams 📻",
+            maxTypeSpeed: 1500,}
           ],
           [
             {type: 'word',
-             text: "Atmospheric, down-tempo, purple, from Europe, 1985-2000 🌌",
-             maxTypeSpeed: 1500,}
+            text: "Atmospheric, down-tempo, purple, from Europe, 1985-2000 🌌",
+            maxTypeSpeed: 1500,}
           ],
           [
             {type: 'word',
-             text: "New, grungy, house, trance 🕺 ",
-             maxTypeSpeed: 1500,}
+            text: "New, grungy, house, trance 🕺 ",
+            maxTypeSpeed: 1500,}
           ],
           [
             {type: 'word',
-             text: "I'm having a party, give me some jazz for cooking! 🍷",
-             maxTypeSpeed: 1500,}
+            text: "I'm having a party, give me some jazz for cooking! 🍷",
+            maxTypeSpeed: 1500,}
           ],
           [
             {type: 'word',
-             text: "Like Taylor Swift but less pop more METAL 🤘",
-             maxTypeSpeed: 1500,}
+            text: "Like Taylor Swift but less pop more METAL 🤘",
+            maxTypeSpeed: 1500,}
           ],
           [
             {type: 'word',
-             text: "The possibilities are endless, Happy Listening!🚀",
-             maxTypeSpeed: 1500,}
+            text: "The possibilities are endless, Happy Listening!🚀",
+            maxTypeSpeed: 1500,}
           ],
         ]} />
         </div>

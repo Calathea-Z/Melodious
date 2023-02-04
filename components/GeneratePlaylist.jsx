@@ -2,14 +2,15 @@ import { useState } from "react";
 import { signOut, useSession} from "next-auth/react";
 import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/solid";
 import useSpotify from "../hooks/useSpotify";
-import Typewriter from "react-typewriter-animate";
+// import Typewriter from "react-typewriter-animate";
 import "react-typewriter-animate/dist/Typewriter.css";
 import { useRecoilState } from "recoil";
 import { generatedListState } from "../atoms/generatorAtom";
 import { useEffect } from "react";
 import TopTenSongs from "./TopTenSongs";
 import { currentArtistTopTenState } from "../atoms/artistTopTenAtom";
-import { songUriState } from "../atoms/playlistAtom";
+import { Typewriter } from "react-simple-typewriter";
+import DropdownMenu from "./DropdownMenu";
 
 
 
@@ -83,22 +84,15 @@ const grabTopTen = async () => {spotifyApi.getArtistTopTracks(artistID, "US").th
   return (
     <div className='flex-grow h-screen overflow-y-scroll items-center justify-center scrollbar-hide'>
       <header className='absolute top-5 right-8'>
-            <div className='flex items-center bg-purple-800 space-x-3 opacity-90 hover:opacity-80 text-white cursor-pointer rounded-full p-1 md:pr-2' onClick={() => signOut()}>
-                <img src={session?.user.image} className='rounded-full w-6 h-6 md:w-10 md:h-10'/>
-                <h2>{session?.user.name}</h2>
-                <ArrowLeftOnRectangleIcon className='w-5 h-5'/>
-            </div>
+            <DropdownMenu/>
         </header>
-      <main className='pt-4 pl-1 pb-0 mb-0 w-9/12 flex flex-col space-y-10 text-yellow-400 font-mono text-4xl tracking-wide leading-10'>
-        <Typewriter dataToRotate={[
-          [
-            {type: 'word',
-            text: "Enter a prompt: Be as specific or abstract as you'd like!",
-            maxTypeSpeed: 500,}
-          ],
-        ]} />
-        <hr className='border-t-[0.1px] border-blue-600'/>
-        <div className="flex flex-col justify-items-center md: md:flex-row h-10 space-y-10 md:space-y-0 space-x-10 mb-">
+      <main className='pt-4 pl-1 pb-0 mb-0 w-9/12 flex flex-col space-y-10 text-yellow-400 font-mono md:text-xl lg:text-4xl tracking-wide leading-10'>
+        <Typewriter
+        words={["Enter a prompt: Be as specific or abstract as you'd like!"]}
+        loop={1}
+        typeSpeed={150}
+        />
+        <div className="flex flex-col justify-items-center md:flex-row lg: justify-between h-10 space-y-10 md:space-y-0 space-x-10 mb-">
           <form onSubmit={onSubmit} className='flex space-x-4'>
             <input
               type="text"
@@ -108,25 +102,27 @@ const grabTopTen = async () => {spotifyApi.getArtistTopTracks(artistID, "US").th
               onChange={(e) => setUserInput(e.target.value)}
               className='text-xs text-blue-600 rounded-md w-[300px]'
             />
-            <button className=' rounded-md border-greeen border-solid border-2 opacity-75 cursor-pointer hover:scale-125 transition transform duration-100 ease-out font-bold text-xs  hover:bg-yellow-400 hover:text-white ' type="submit" value="Generate">Generate
+            <button className='rounded-md border-greeen border-solid border-2 opacity-75 p-2 cursor-pointer hover:scale-125 transition transform duration-100 ease-out font-bold text-xs  hover:bg-yellow-400 hover:text-white ' type="submit" value="Generate">Generate
             </button>
           </form>
-          <div className='text-greeen flex flex-wrap space-y-1 pb-28 font-serif  text-[13px] tracking-tight leading-snug mt-0'>
+          <div className='text-greeen flex flex-col space-y-2 pb-28 font-serif  text-[13px] tracking-tight leading-snug mt-0'>
             {(result)?
               <div className='text-yellow-400 font-mono text-md '>
-              <Typewriter dataToRotate={[
-                [{type: 'word',
-                  text: "Select Your Artist",
-                  cursor: {char: "🎹"},
-                }],]} 
+              <Typewriter 
+              words={["Select an Artist"]}
+              loop={1}
+              typeSpeed={200}
+              cursor={true}
+              cursorBlinking={false}
+              cursorStyle={'🎹'}
               />
               </div> : <p> </p>
             }
-          <div className="flex flex-wrap w-96">
+          <div className="flex flex-wrap w-96 space-y-2">
             {result?.map((result, index) => (
-              <div className='flex space-x-2 space-y-2' key={index}>
-                <button className='border rounded-lg p-2 border-yellow-300  opacity-80 hover:bg-yellow-400 hover:text-white transition transform duration-100 ease-out' value={result} type='button' onClick={handleClick}>{result}</button> 
-                </div>
+              <div className='flex space-x-2 ' key={index}>
+                <button className='border rounded-lg p-2 pb-1 border-yellow-300  opacity-80 hover:bg-yellow-400 hover:text-white transition transform duration-100 ease-out' value={result} type='button' onClick={handleClick}>{result}</button> 
+              </div>
             ))}
           </div>
         </div>
