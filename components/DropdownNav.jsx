@@ -1,19 +1,17 @@
-import { ArrowLeftOnRectangleIcon, ChevronDownIcon, PlusCircleIcon, HomeIcon, CodeBracketSquareIcon, MagnifyingGlassCircleIcon } from '@heroicons/react/24/solid';
+import { ArrowLeftOnRectangleIcon, ChevronDoubleDownIcon, PlusCircleIcon, HomeIcon, CodeBracketSquareIcon, MagnifyingGlassCircleIcon } from '@heroicons/react/24/solid';
 import { Fragment } from 'react'
 import { signOut, useSession } from 'next-auth/react';
 import { Menu, Transition } from '@headlessui/react';
 
-function DropdownMenu() {
+function DropdownNav() {
   const { data: session } = useSession();
   return (
-    <div className='flex justify-end bg-transparent p-4 z-50'>
-        <Menu as='div' className='relative'>
+    <div className='flex justify-end bg-transparent p-4'>
+        <Menu as='div' className='relative z-20'>
           {({open}) => (
             <Fragment>
-            <Menu.Button className='inline-flex justify-center space-x-4 text-xs p-3 w-full rounded-lg border border-gray-300 shadow-sm px-4 bg-purple-400 font-medium text-white hover:bg-gray-50 hover:text-black focus: outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500'>
-                <img src={session?.user.image} className='rounded-full w-10 h-10'/>
-                <h2>{session?.user.name}</h2>
-                <ChevronDownIcon />
+            <Menu.Button className='inline-flex justify-center space-x-4 text-xs p-3 w-full rounded-lg px-4 bg-transparent font-medium text-stone-300 hover:bg-greeen focus: outline-none focus:ring-2  focus:ring-black'>
+                <ChevronDoubleDownIcon className='h-10 w-10 font-extrabold text-l'/>
             </Menu.Button>
             <Transition 
             show={open}
@@ -25,6 +23,13 @@ function DropdownMenu() {
             leaveTo='opacity-0 scale-95'>
             <Menu.Items className='origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none'>
               <div className='py-1'>
+              <Menu.Item>
+                      <p className='bg-white text-black flex justify-center p-2 pr-4 space-x-3 items-center font-bold border-b-1 border-b-black'>
+                        <img src={session?.user.image} className='rounded-full w-12 h-12 border-2 border-gray-100'/>
+                        <h2>{session?.user.name}</h2>
+                      </p>
+
+                </Menu.Item>
               <Menu.Item>
                     {({ active }) => (
                       <a href='/' 
@@ -75,4 +80,4 @@ function DropdownMenu() {
   )
 }
 
-export default DropdownMenu
+export default DropdownNav

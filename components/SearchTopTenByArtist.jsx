@@ -7,7 +7,7 @@ import { useSession } from "next-auth/react";
 import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/outline";
 import TopTenSongs from "./TopTenSongs";
 import CreatePlaylist from "../components/CreatePlaylist";
-import DropdownMenu from "./DropdownMenu";
+import DropdownNav from "./DropdownNav";
 
 function SearchTopTenByArtist() {
     const { data: session } = useSession();
@@ -57,7 +57,7 @@ if (artistID) {grabTopTen();}
 return (
     <div className='flex-grow h-screen overflow-y-scroll items-center justify-center scrollbar-hide'>
         <header className='absolute top-5 right-8'>
-            <DropdownMenu />
+            <DropdownNav />
         </header>
         <div className='`flex justify-between space-x-2 bg-gradient-to-b to-purp from-greeen h-80 text-white p-8`'>
             <div className='flex'>

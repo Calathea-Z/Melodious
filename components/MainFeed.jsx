@@ -5,8 +5,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { playlistIdState, playlistState } from "../atoms/playlistAtom";
 import useSpotify from "../hooks/useSpotify";
 import Songs from './PlaylistSongs';
-import { signOut } from "next-auth/react";
-import DropdownMenu from "./DropdownMenu";
+import DropdownNav from "./DropdownNav";
 
 function MainFeed() {
     const spotifyApi = useSpotify();
@@ -24,7 +23,7 @@ function MainFeed() {
 return (
     <div className='flex-grow h-screen overflow-y-scroll scrollbar-hide'>
         <header className='absolute top-5 right-8'>
-            <DropdownMenu />
+            <DropdownNav />
         </header>
         <section className={`flex items-end space-x-7 bg-gradient-to-b to-purp from-greeen h-80 text-yellow-400 p-8`}>
             <img src={playlist?.images?.[0]?.url} alt='' className='h-44 w-44 shadow-2xl' />
