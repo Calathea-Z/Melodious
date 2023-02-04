@@ -1,16 +1,13 @@
 import { useState } from "react";
-import { signOut, useSession} from "next-auth/react";
-import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/solid";
+import { useSession } from "next-auth/react";
 import useSpotify from "../hooks/useSpotify";
-// import Typewriter from "react-typewriter-animate";
-import "react-typewriter-animate/dist/Typewriter.css";
 import { useRecoilState } from "recoil";
 import { generatedListState } from "../atoms/generatorAtom";
 import { useEffect } from "react";
 import TopTenSongs from "./TopTenSongs";
 import { currentArtistTopTenState } from "../atoms/artistTopTenAtom";
 import { Typewriter } from "react-simple-typewriter";
-import DropdownMenu from "./DropdownMenu";
+import DropdownNav from "./DropdownNav";
 
 
 
@@ -83,10 +80,10 @@ const grabTopTen = async () => {spotifyApi.getArtistTopTracks(artistID, "US").th
 
   return (
     <div className='flex-grow h-screen overflow-y-scroll items-center justify-center scrollbar-hide'>
-      <header className='absolute top-5 right-8'>
-            <DropdownMenu/>
+      <header className='top-5 right-8'>
+            <DropdownNav/>
         </header>
-      <main className='pt-4 pl-1 pb-0 mb-0 w-9/12 flex flex-col space-y-10 text-yellow-400 font-mono md:text-xl lg:text-4xl tracking-wide leading-10'>
+      <main className='p-4 mb-0 w-9/12 flex flex-col align-center justify-center space-y-10 text-yellow-400 font-mono md:text-xl lg:text-4xl tracking-wide leading-10'>
         <Typewriter
         words={["Enter a prompt: Be as specific or abstract as you'd like!"]}
         loop={1}
@@ -102,7 +99,7 @@ const grabTopTen = async () => {spotifyApi.getArtistTopTracks(artistID, "US").th
               onChange={(e) => setUserInput(e.target.value)}
               className='text-xs text-blue-600 rounded-md w-[300px]'
             />
-            <button className='rounded-md border-greeen border-solid border-2 opacity-75 p-2 cursor-pointer hover:scale-125 transition transform duration-100 ease-out font-bold text-xs  hover:bg-yellow-400 hover:text-white ' type="submit" value="Generate">Generate
+            <button className='z-0 rounded-md border-greeen border-solid border-2 opacity-75 p-2 cursor-pointer hover:scale-125 transition transform duration-100 ease-out font-bold text-xs  hover:bg-yellow-400 hover:text-white ' type="submit" value="Generate">Generate
             </button>
           </form>
           <div className='text-greeen flex flex-col space-y-2 pb-28 font-serif  text-[13px] tracking-tight leading-snug mt-0'>

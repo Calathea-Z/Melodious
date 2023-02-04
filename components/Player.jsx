@@ -5,13 +5,13 @@ import { useRecoilState } from 'recoil';
 import { currentTrackIdState, isPlayingState } from '../atoms/songAtom';
 import useSongInfo from '../hooks/useSongInfo';
 import {BackwardIcon, PauseCircleIcon, PlayCircleIcon, ForwardIcon } from '@heroicons/react/24/outline';
-import { SpeakerWaveIcon } from '@heroicons/react/24/outline';
+import DropUpPlaylistSelector from './DropUpPlaylistSelector';
 
 
 function Player() {
     const spotifyApi = useSpotify();
     const songInfo = useSongInfo();
-    const { data: session, status } = useSession();
+    const { data: session } = useSession();
     const [currentTrackId, setCurrentTrackId] = useRecoilState(currentTrackIdState);
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState)
     const [volume, setVolume] = useState(50);
@@ -63,17 +63,18 @@ return (
             </div>
         </div>
         <div className='flex items-center justify-evenly'>
-                {/* <BeakerIcon className='button' onClick={() => spotifyApi.setShuffle()} /> */}
-                <BackwardIcon className='button' onClick={() => spotifyApi.skipToPrevious()} />
-                {isPlaying ? (
-                    <PauseCircleIcon className='button' onClick={handlePlayPause} />
-                ) : (
-                    <PlayCircleIcon className='button' onClick={handlePlayPause} />
-                )}
-                <ForwardIcon className='button' onClick={() => spotifyApi.skipToNext} />
-                {/* <ArrowPathIcon className='button' onClick={() => spotifyApi.setRepeat()} /> */}
-            </div>
+            <BackwardIcon className='button' onClick={() => spotifyApi.skipToPrevious()} />
+            {isPlaying ? (
+                <PauseCircleIcon className='button' onClick={handlePlayPause} />
+            ) : (
+                <PlayCircleIcon className='button' onClick={handlePlayPause} />
+            )}
+            <ForwardIcon className='button' onClick={() => spotifyApi.skipToNext} />
         </div>
+        <div className='justify-self-end items-center align-middle flex justify-center'>
+                <DropUpPlaylistSelector />
+        </div>
+    </div>
 )}
 
 export default Player
