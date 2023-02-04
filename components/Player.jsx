@@ -54,7 +54,7 @@ function Player() {
     
 return (
 
-    <div className='h-24 bg-gradient-to-b from-greeen to-purp text-yellow-400 grid grid-cols-3 text-xs md:text-base px-2 md:px-8'>
+    <div className='h-24 bg-gradient-to-b from-greeen to-purp text-yellow-400 flex justify-between md:grid md:grid-cols-3 text-xs md:text-base px-2 md:px-8'>
         <div className='flex items-center space-x-4'>
             <img src={songInfo?.album.images?.[0]?.url} alt='' className='hidden md:inline h-10 w-10' />
             <div>
@@ -71,7 +71,7 @@ return (
             )}
             <ForwardIcon className='button' onClick={() => spotifyApi.skipToNext} />
         </div>
-        <div className='justify-self-end items-center align-middle flex justify-center'>
+        <div className='justify-self-end items-center align-middle flex justify-center md:hidden'>
                 <DropUpPlaylistSelector />
         </div>
     </div>
