@@ -11,7 +11,7 @@ module.exports = {
         transparent: 'transparent',
         current: 'currentColor', 
         'purp': '#1e1024',
-        'greeen': '#3d871d',
+        'greeen': '#A6FF92',
     },
     },
   },

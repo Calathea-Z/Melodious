@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react';
 import { useRecoilState } from 'recoil';
 import { currentTrackIdState, isPlayingState } from '../atoms/songAtom';
 import useSongInfo from '../hooks/useSongInfo';
-import { ArrowPathIcon, BackwardIcon, BeakerIcon, ForwardIcon, PauseCircleIcon, PlayCircleIcon } from '@heroicons/react/24/solid';
+import {BackwardIcon, PauseCircleIcon, PlayCircleIcon, ForwardIcon } from '@heroicons/react/24/outline';
 import { SpeakerWaveIcon } from '@heroicons/react/24/outline';
 
 
