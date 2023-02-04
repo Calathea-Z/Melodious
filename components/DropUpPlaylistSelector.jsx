@@ -1,6 +1,6 @@
 import { useRecoilValue, useRecoilState } from "recoil";
 import { allPlaylistsState, playlistState, playlistIdState } from "../atoms/playlistAtom";
-import {Fragment, useEffect, useState } from "react";
+import {Fragment, useEffect } from "react";
 import { Listbox, Transition } from "@headlessui/react"
 import { CheckCircleIcon, ChevronUpDownIcon  } from "@heroicons/react/24/solid";
 
@@ -31,7 +31,7 @@ function DropUpPlaylistSelector() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className='absolute mt-1 max-h-60 max-w-40 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm -translate-y-full'>
+            <Listbox.Options className='absolute mt-1 max-h-60 max-w-20 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm -translate-y-full'>
               {playlists?.map((playlist, index) => (
                 <Listbox.Option
                   key={index}
