@@ -1,12 +1,15 @@
 import useSpotify from "../hooks/useSpotify";
 import time from "../lib/time";
 import { isPlayingState, currentTrackIdState } from "../atoms/songAtom";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { playlistIdState, songUriState } from "../atoms/playlistAtom";
 
 function PlaylistSong({ order, track }) {
   
   const [currentTrackId, setCurrentTrackId] =useRecoilState(currentTrackIdState);
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
+  const [songUri, setSongUri] = useRecoilState(songUriState);
+  const playlistID = useRecoilValue(playlistIdState);
   const spotifyApi = useSpotify();
 
 //-----Sets the user selected song to now playing.  
@@ -17,6 +20,21 @@ function PlaylistSong({ order, track }) {
       uris: [track.track.uri],
     });
   };
+
+  //----- COMMENTING OUT FOR FUTURE USE: DELETE FUNCTIONALITY NOT CURRENTLY WORKING BECAUSE OF ERROR IN SPOTIFY API.-------------------******
+  
+  //-----Sets the URI of the user selected song for playlist addition and then calls helper function to complete process.
+  // const handleDeleteSong =  () => {
+  //   setSongUri(track.uri);
+  //   deleteFromPlaylist();
+  // };
+
+  //-----Adds song to playlist. 
+  // const deleteFromPlaylist = async () => {
+  //   const deletedSong = spotifyApi.removeTracksFromPlaylist(playlistID, [songUri])
+  //   console.log(deletedSong);
+  // };
+
 
   return (
     <div className="grid grid-cols-2 text-purple-400 py-4 px-5 ">
@@ -37,6 +55,12 @@ function PlaylistSong({ order, track }) {
       </div>
       <div className="flex items-center justify-between ml-auto md:ml-0">
         <p className="w-40 hidden md:inline">{track?.track?.album?.name}</p>
+
+{/* ****Delete functionality is not currently working through spotify*** */}
+        {/* <button className='button' onClick={handleDeleteSong}> 
+          DELETE
+        </button> */}
+
         <p>{time(track?.track?.duration_ms)}</p>
       </div>
     </div>
