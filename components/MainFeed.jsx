@@ -1,4 +1,6 @@
 import useSpotify from "../hooks/useSpotify";
+import MelodiousLogo from "../assets/Melodious-1.png";
+import Image from "next/image";
 import Songs from "./PlaylistSongs";
 import DropdownNav from "./DropdownNav";
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -26,20 +28,32 @@ function MainFeed() {
         <DropdownNav />
       </header>
       <section
-        className={`flex items-end space-x-7 bg-gradient-to-b to-purp from-greeen h-80 text-yellow-400 p-8`}
+        className={`flex  flex-col space-x-7 md:space-y-3 bg-gradient-to-b to-purp from-greeen h-80 text-yellow-400`}
       >
-        <img
-          src={playlist?.images?.[0]?.url}
-          alt=""
-          className="h-44 w-44 shadow-2xl"
-        />
         <div>
-          <p>PLAYLIST</p>
-          <h2 className="text-2xl md:text-3xl xl:text-5xl font-bold">
-            {playlist?.name}
-          </h2>
+          <Image
+            className="w-[7rem]"
+            src={MelodiousLogo}
+            alt="Melodious Logo"
+          />
+        </div>
+        <div className='flex space-x-3 items-end'>
+          <div>
+            <img
+              src={playlist?.images?.[0]?.url}
+              alt=""
+              className=" h-24 w-24 md:h-44 md:w-44 shadow-2xl"
+            />
+          </div>
+          <div>
+            <p>PLAYLIST</p>
+            <h2 className="text-2xl md:text-3xl xl:text-5xl font-bold">
+              {playlist?.name}
+            </h2>
+          </div>
         </div>
       </section>
+      <hr className="border-t-[0.1px] border-pink-400" />
       <div>
         <Songs />
       </div>

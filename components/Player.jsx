@@ -78,7 +78,7 @@ function Player() {
         )}
         <ForwardIcon className="button" onClick={() => spotifyApi.skipToNext} />
       </div>
-      <div className="justify-self-end items-center align-middle flex justify-center md:hidden">
+      <div className="items-center align-middle flex md:hidden">
         <DropUpPlaylistSelector />
       </div>
     </div>
