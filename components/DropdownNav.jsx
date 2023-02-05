@@ -1,4 +1,6 @@
-import { ArrowLeftOnRectangleIcon, Bars3Icon, PlusCircleIcon, HomeIcon, CodeBracketSquareIcon, MagnifyingGlassCircleIcon } from '@heroicons/react/24/solid';
+import MelodiousLogo from '../assets/Melodious-1.png'
+import Image from 'next/image'
+import { ArrowLeftOnRectangleIcon, Bars3Icon, PlusCircleIcon, HomeIcon, CodeBracketSquareIcon, MagnifyingGlassCircleIcon, ChevronDownIcon } from '@heroicons/react/24/solid';
 import { Fragment } from 'react'
 import { signOut, useSession } from 'next-auth/react';
 import { Menu, Transition } from '@headlessui/react';
@@ -9,12 +11,14 @@ function DropdownNav() {
   const { data: session } = useSession();
 
 return (
-  <div className='flex justify-end bg-transparent p-4'>
+  <div className='flex justify-end bg-transparent'>
     <Menu as='div' className='relative z-20'>
       {({open}) => (
         <Fragment>
-          <Menu.Button className='inline-flex justify-center space-x-4 text-xs p-3 w-full rounded-lg px-4 bg-transparent font-medium text-stone-500 hover:bg-greeen focus: outline-none focus:ring-2  focus:ring-black'>
-            <Bars3Icon className='h-10 w-10 font-extrabold text-l'/>
+          <Menu.Button className=' inline-flex justify-center items-center text-xs w-full rounded-lg bg-transparent font-medium text-stone-500 hover:opacity-80 focus: outline-none'>
+            <ChevronDownIcon className='h-5 w-5 font-extrabold text-l'/>
+            <Image className='w-[7rem]' src= { MelodiousLogo } alt='Melodious Logo' />
+            
           </Menu.Button>
           
 {/*-----Creates a smooth transition for modal opening and closing.           */}

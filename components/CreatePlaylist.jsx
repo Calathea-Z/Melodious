@@ -30,7 +30,7 @@ function CreatePlaylist() {
   //-----Only call newPlaylist when the playlist ID changes.
   useEffect(() => {
     newPlaylist();
-  }, [playlistId]);
+  }, []);
 
   return (
     //-----Transition root and Dialog allow for a smooth transition to the modal state.
@@ -50,7 +50,7 @@ function CreatePlaylist() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="fixed inset-0 bg-blue-400 bg-opacity-75 transition-opacity" />
+            <Dialog.Overlay className="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" />
           </Transition.Child>
 
           {/*-----This code tricks the browser into rendering the modal in the middle of the screen.*/}
@@ -69,16 +69,17 @@ function CreatePlaylist() {
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <div className="inline-block bg-yellow-300 rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle align-top sm:max-w-sm sm:w-full sm:p-6">
+            <div className="inline-block bg-black text-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle align-top sm:max-w-sm sm:w-full sm:p-6">
               <div className="flex">
-                <div className="flex flex-col font-mono">
+                <div className="flex flex-col">
                   <h6>Create a New Playlist</h6>
                   <form onChange={setInput}>
                     <input
                       type="text"
+                      value={playlistTitle}
                       name="playlistTitle"
                       placeholder="...title"
-                      className="text-black border-none rounded-sm opacity-25"
+                      className="text-black border-none rounded-sm"
                     />
                     <button
                       type="button"
