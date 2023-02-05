@@ -2,7 +2,7 @@ import { useRecoilValue, useRecoilState } from "recoil";
 import { allPlaylistsState, playlistState, playlistIdState } from "../atoms/playlistAtom";
 import { CheckCircleIcon, ChevronUpDownIcon  } from "@heroicons/react/24/solid";
 import { Listbox, Transition } from "@headlessui/react"
-import {Fragment, useEffect } from "react";
+import { Fragment } from "react";
 
 function DropUpPlaylistSelector() {
 
@@ -38,7 +38,8 @@ return (
                       {selected ? (
                       <span className='absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600'>
                         <CheckCircleIcon className="h-5 w-5" aria-hidden='true' />
-                      </span> ) : null}
+                      </span> ) : null
+                      }
                     </>
                   )}
                 </Listbox.Option>
