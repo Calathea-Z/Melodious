@@ -57,7 +57,7 @@ return (
 
                 <Menu.Item>
                   {({ active }) => (
-                    <a href='/buildplaylist' className={`group w-full flex items-center px-4 py-2 text-sm ${active ? 'bg-yellow-400 text-white' :  'text-gray-700'}`}
+                    <a href='/searchbyartists' className={`group w-full flex items-center px-4 py-2 text-sm ${active ? 'bg-yellow-400 text-white' :  'text-gray-700'}`}
                     >
                       <MagnifyingGlassCircleIcon className={`mr-3 h-5 w-5 ${active ? 'text-white' : 'text-gray-400'}`} aria-hidden='true' />
                       Search by Artist
