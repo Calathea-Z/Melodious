@@ -80,16 +80,17 @@ export default function GeneratePlaylist() {
 
 return (
     <div className='flex-grow h-screen overflow-y-scroll items-center justify-center scrollbar-hide'>
-      <header className='top-5 right-8'>
+      <header className='absolute top-5 right-8'>
         <DropdownNav/>
       </header>
-      <main className='p-4 mb-0 w-9/12 flex flex-col align-center justify-center space-y-10 text-yellow-400 font-mono md:text-xl lg:text-4xl tracking-wide leading-10'>
+      <div className='`flex justify-between space-x-2 bg-gradient-to-b to-purp from-greeen h-80 text-white p-8`'>
+      <main className='p-4 mb-0 w-9/12 flex flex-col align-center justify-center space-y-10  text-yellow-400 font-mono md:text-xl lg:text-4xl tracking-wide leading-10'>
         <Typewriter
         words={["Enter a prompt: Be as specific or abstract as you'd like!"]}
         loop={1}
-        typeSpeed={150}
+        typeSpeed={50}
         />
-        <div className="flex flex-col justify-items-center md:flex-row lg: justify-between h-10 space-y-10 md:space-y-0 space-x-10 mb-">
+        <div className="flex flex-col justify-items-center md:flex-row lg: justify-between h-10 md:pt-6 space-y-10 md:space-y-0 space-x-10 mb-">
           <form onSubmit={onSubmit} className='flex space-x-4'>
             <input
               type="text"
@@ -97,9 +98,9 @@ return (
               placeholder="Atmospheric 60's Jazz from France"
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
-              className='text-xs text-blue-600 rounded-md w-[300px]'
+              className='text-xs text-blue-600 rounded-md w-[200px] p-4'
             />
-            <button className='z-0 rounded-md border-greeen border-solid border-2 opacity-75 p-2 cursor-pointer hover:scale-125 transition transform duration-100 ease-out font-bold text-xs  hover:bg-yellow-400 hover:text-white ' type="submit" value="Generate">Generate
+            <button className='z-0 flex items-center rounded-md border-yellow-400 text-blue-400 border-solid border-2 opacity-75 p-4 cursor-pointer hover:scale-125 transition transform duration-100 ease-out font-bold text-xs  hover:bg-yellow-400 hover:text-black' type="submit" value="Generate">Generate
             </button>
           </form>
           <div className='text-greeen flex flex-col space-y-2 pb-28 font-serif  text-[13px] tracking-tight leading-snug mt-0'>
@@ -108,7 +109,7 @@ return (
                 <Typewriter 
                 words={["Select an Artist"]}
                 loop={1}
-                typeSpeed={200}
+                typeSpeed={40}
                 cursor={true}
                 cursorBlinking={false}
                 cursorStyle={'🎹'}
@@ -118,7 +119,7 @@ return (
               <div className="flex flex-wrap w-96 space-y-2">
                 {result?.map((result, index) => (
                   <div className='flex space-x-2 ' key={index}>
-                    <button className='border rounded-lg p-2 pb-1 border-yellow-300  opacity-80 hover:bg-yellow-400 hover:text-white transition transform duration-100 ease-out' value={result} type='button' onClick={handleClick}>
+                    <button className='border text-blue-400 max-w-md rounded-lg p-2 pb-1 border-yellow-300  opacity-80 hover:bg-yellow-400 hover:text-black transition transform duration-100 ease-out' value={result} type='button' onClick={handleClick}>
                       {result}
                     </button> 
                   </div>
@@ -133,6 +134,7 @@ return (
           <TopTenSongs />
         </div> : null 
       }
+      </div>
     </div>
   );
 }
