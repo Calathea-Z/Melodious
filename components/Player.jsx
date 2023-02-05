@@ -1,10 +1,12 @@
 import DropUpPlaylistSelector from "./DropUpPlaylistSelector";
 import useSongInfo from "../hooks/useSongInfo";
 import useSpotify from "../hooks/useSpotify";
-import { BackwardIcon, PauseCircleIcon, PlayCircleIcon, ForwardIcon, SpeakerXMarkIcon } from "@heroicons/react/24/outline";
-import { SpeakerWaveIcon } from "@heroicons/react/24/solid";
+
+import { BackwardIcon, PauseCircleIcon, PlayCircleIcon, ForwardIcon, SpeakerWaveIcon as VolumeDown } from "@heroicons/react/24/outline";
+import { SpeakerWaveIcon as VolumeUp } from "@heroicons/react/24/solid";
 import { currentTrackIdState, isPlayingState } from "../atoms/songAtom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { debounce } from "lodash";
 import { useSession } from "next-auth/react";
 import { useRecoilState } from "recoil";
 
@@ -32,13 +34,25 @@ function Player() {
     }
   };
 
-//----- If the trackID changes, the session changes, or the spotifyApi Hook is used the current song is refresed.
+//----- If the trackID changes, the session changes, or the spotifyApi Hook is used the current song is refreshed.
   useEffect(() => {
     if (spotifyApi.getAccessToken() && !currentTrackId) {
       fetchCurrentSong();
-      setVolume(50);
     }
   }, [currentTrackId, spotifyApi, session]);
+
+
+  useEffect(() => {
+    if (volume > 0 && volume < 100) {
+      adjustVolume(volume)
+    }
+  },[volume])
+
+  const adjustVolume = useCallback(
+    debounce((volume) => {
+      spotifyApi.setVolume(volume).catch(error);
+    }, 500), []
+  )
 
 //---- Handles the play pause logic.  
   const handlePlayPause = () => {
@@ -80,7 +94,7 @@ function Player() {
         <ForwardIcon className="button" onClick={() => spotifyApi.skipToNext} />
       </div>
       <div className='flex items-center space-x-3 md:space-x-4 justify-end pr-5'>
-        <SpeakerXMarkIcon className='button' />
+        <VolumeDown onClick={() => volume > 0 && setVolume(volume-10)} className='button' />
         <input
           className='w-14 md:w-28'
           type='range'
@@ -89,7 +103,7 @@ function Player() {
           min={0}
           max={100}
         />
-        <SpeakerWaveIcon className='button' />
+        <VolumeUp onClick={() => volume < 100 && setVolume(volume+10)}className='button' />
       </div>
     </div>
   );
