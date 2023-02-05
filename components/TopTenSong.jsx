@@ -42,21 +42,21 @@ function TopTenSong({ order, track }) {
         <p>{order + 1} </p>
         <img src={track?.album?.images[0].url} alt="" className="h-20 w-20" />
         <div>
-          <p className="w-36 lg:w-64 truncate">{track?.name}</p>
-          <p className="w-40 text-greeen">{track?.artists[0].name}</p>
+          <p className="w-20 md:w-36 lg:w-64 text-xs md:text-lg truncate">{track?.name}</p>
+          <p className="text-xs md:text-lg text-greeen">{track?.artists[0].name}</p>
         </div>
       </div>
-      <div className="flex items-center justify-between ml-auto md:ml-0">
+      <div className="flex items-center space-x-2 justify-between ml-auto md:ml-0">
         <p className="w-40 hidden md:inline text-white">{track?.album?.name}</p>
         <div>
           <button
-            className="rounded-lg p-2 border-yellow-300  opacity-80 hover:bg-yellow-400 hover:text-white transition transform duration-100 ease-out"
+            className="text-xs md:text-lg rounded-lg p-2 border-yellow-300  opacity-80 hover:bg-yellow-400 hover:text-white transition transform duration-100 ease-out"
             onClick={handleSetSongURI}
           >
             Add to Playlist
           </button>
         </div>
-        <p className="text-white">{time(track?.duration_ms)}</p>
+        <p className="text-white text-xs md:text-lg">{time(track?.duration_ms)}</p>
       </div>
     </div>
   );
