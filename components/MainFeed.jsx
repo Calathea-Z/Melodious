@@ -6,6 +6,7 @@ import DropdownNav from "./DropdownNav";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { playlistIdState, playlistState } from "../atoms/playlistAtom";
 import { useEffect } from "react";
+import DropUpPlaylistSelector from "./DropUpPlaylistSelector";
 
 function MainFeed() {
   const spotifyApi = useSpotify();
@@ -25,7 +26,12 @@ function MainFeed() {
   return (
     <div className="flex-grow h-screen overflow-y-scroll scrollbar-hide">
       <header className="absolute top-5 right-8">
+        <div className='flex align-center justify-center space-x-4'>
+          <div className='md:hidden'>
+        <DropUpPlaylistSelector />
+        </div>
         <DropdownNav />
+        </div>
       </header>
       <section
         className={`flex  flex-col space-x-7 md:space-y-3 bg-gradient-to-b to-purp from-greeen h-80 text-yellow-400`}
@@ -42,7 +48,7 @@ function MainFeed() {
             <img
               src={playlist?.images?.[0]?.url}
               alt=""
-              className=" h-24 w-24 md:h-44 md:w-44 shadow-2xl"
+              className=" h-32 w-32 md:h-44 md:w-44 shadow-2xl mt-16 md:mt-0"
             />
           </div>
           <div>

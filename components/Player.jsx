@@ -50,7 +50,7 @@ function Player() {
 
   const adjustVolume = useCallback(
     debounce((volume) => {
-      spotifyApi.setVolume(volume).catch(error);
+      spotifyApi.setVolume(volume).catch((err) => console.log("ERROR", err));
     }, 500), []
   )
 
