@@ -1,9 +1,10 @@
-import { ArrowLeftOnRectangleIcon, ChevronDoubleDownIcon, PlusCircleIcon, HomeIcon, CodeBracketSquareIcon, MagnifyingGlassCircleIcon } from '@heroicons/react/24/solid';
+import { ArrowLeftOnRectangleIcon, Bars3Icon, PlusCircleIcon, HomeIcon, CodeBracketSquareIcon, MagnifyingGlassCircleIcon } from '@heroicons/react/24/solid';
 import { Fragment } from 'react'
 import { signOut, useSession } from 'next-auth/react';
 import { Menu, Transition } from '@headlessui/react';
 
 function DropdownNav() {
+
 //----- Grab user session info and rename it to data.  
   const { data: session } = useSession();
 
@@ -13,8 +14,9 @@ return (
       {({open}) => (
         <Fragment>
           <Menu.Button className='inline-flex justify-center space-x-4 text-xs p-3 w-full rounded-lg px-4 bg-transparent font-medium text-stone-500 hover:bg-greeen focus: outline-none focus:ring-2  focus:ring-black'>
-            <ChevronDoubleDownIcon className='h-10 w-10 font-extrabold text-l'/>
+            <Bars3Icon className='h-10 w-10 font-extrabold text-l'/>
           </Menu.Button>
+          
 {/*-----Creates a smooth transition for modal opening and closing.           */}
           <Transition 
           show={open}
