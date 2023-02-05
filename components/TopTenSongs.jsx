@@ -1,10 +1,11 @@
-
+import TopTenSong from './TopTenSong';
 import { currentArtistTopTenState } from '../atoms/artistTopTenAtom';
 import { useRecoilValue } from 'recoil';
-import TopTenSong from './TopTenSong';
 
 function TopTenSongs() {
+
     const topTenSongsList = useRecoilValue(currentArtistTopTenState);
+    
     return (
       <div className='text-greeen px-8 flex flex-col space-y-1 pb-28'>
           {topTenSongsList?.map((track, index) => (

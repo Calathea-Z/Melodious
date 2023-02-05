@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
 export const currentArtistTopTenState = atom({
-    key: 'currentArtistTopTenState',
-    default: null,
+  key: "currentArtistTopTenState",
+  default: null,
 });
