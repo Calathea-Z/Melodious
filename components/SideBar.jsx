@@ -7,6 +7,7 @@ import { playlistIdState } from "../atoms/playlistAtom";
 import { allPlaylistsState} from "../atoms/playlistAtom";
 import { useRouter } from 'next/router';
 import { modalState } from '../atoms/modalAtom';
+import CreatePlaylist from './CreatePlaylist';
 
 
 const Sidebar = () => {
@@ -41,10 +42,13 @@ return (
                     <p>Ask For Suggestions</p>
                 </button>
             <hr className='border-t-[0.1px] border-greeen pb-2'/>
-                <button className='flex items-center space-x-2 hover:text-yellow-400' onClick={() => router.push('/buildplaylist')}> 
+                <button className='flex items-center space-x-2 hover:text-yellow-400' onClick={() => router.push('/searchbyartists')}> 
                     <MagnifyingGlassCircleIcon className='h-5 w-5'/>
                     <p>Search by Artist</p>
                 </button>
+                <CreatePlaylist />
+
+{/* ------------Opens Modal for creating a new playlist.                */}
             <hr className='border-t-[0.1px] border-greeen'/>
             <button className='flex items-center space-x-2 hover:text-yellow-400' onClick={()=> setOpen(true)}>
                 <PlusCircleIcon className='h-5 w-5'/>
@@ -56,7 +60,6 @@ return (
                     {playlist.name}
                 </p>
             ))}
-
         </div>
     </div>
 )
