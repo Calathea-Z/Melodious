@@ -34,13 +34,13 @@ function TopTenSong({ order, track }) {
   };
 
   return (
-    <div className="grid grid-cols-2 text-purple-400 py-4 px-5 ">
+    <div className="grid grid-cols-2 text-purple-400 py-4 px-1 md:px-5">
       <div
-        className="flex items-center space-x-4 hover:bg-gray-900 rounded-lg cursor-pointer"
+        className="flex items-center space-x-2 md:space-x-4 hover:bg-gray-900 rounded-lg cursor-pointer"
         onClick={playSong}
       >
         <p>{order + 1} </p>
-        <img src={track?.album?.images[0].url} alt="" className="h-20 w-20" />
+        <img src={track?.album?.images[0].url} alt="" className=" h-10 w-10 md:h-20 md:w-20" />
         <div>
           <p className="w-20 md:w-36 lg:w-64 text-xs md:text-lg truncate">{track?.name}</p>
           <p className="text-xs md:text-lg text-greeen">{track?.artists[0].name}</p>
