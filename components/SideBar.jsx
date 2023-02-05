@@ -68,7 +68,8 @@ const Sidebar = () => {
             key={playlist.id}
             className="cursor-pointer hover:text-yellow-400"
             onClick={() => {
-              setPlaylistId(playlist.id);
+              setPlaylistId(playlist.id)
+              router.push('/');
             }}
           >
             {playlist.name}

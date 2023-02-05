@@ -8,8 +8,11 @@ function PlaylistSong({ order, track }) {
   
   const [currentTrackId, setCurrentTrackId] =useRecoilState(currentTrackIdState);
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
-  const [songUri, setSongUri] = useRecoilState(songUriState);
-  const playlistID = useRecoilValue(playlistIdState);
+
+  //-----Code below to be used at a later time when delete function from Spotify API is functional------------***********. 
+  // const [songUri, setSongUri] = useRecoilState(songUriState);
+  // const playlistID = useRecoilValue(playlistIdState);
+
   const spotifyApi = useSpotify();
 
 //-----Sets the user selected song to now playing.  
@@ -22,7 +25,7 @@ function PlaylistSong({ order, track }) {
   };
 
   //----- COMMENTING OUT FOR FUTURE USE: DELETE FUNCTIONALITY NOT CURRENTLY WORKING BECAUSE OF ERROR IN SPOTIFY API.-------------------******
-  
+
   //-----Sets the URI of the user selected song for playlist addition and then calls helper function to complete process.
   // const handleDeleteSong =  () => {
   //   setSongUri(track.uri);
