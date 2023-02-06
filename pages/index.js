@@ -3,7 +3,6 @@ import { getSession } from 'next-auth/react';
 import MainFeed from '../components/MainFeed';
 import SideBar from '../components/SideBar';
 import Player from '../components/Player';
-import Link from 'next/link';
 
 const Home = () => {
   return (
