@@ -102,7 +102,7 @@ export default function GeneratePlaylist() {
       </header>
       <div className="`flex items-end justify-between space-x-2 bg-gradient-to-b to-purp from-greeen h-80 text-white p-8`">
         <Image className='w-[7rem]' src= { MelodiousLogo } alt='Melodious Logo' />
-        <main className="p-4 mb-0 w-9/12 flex flex-col align-center justify-center space-y-10  text-yellow-400 font-mono  text-sm md:text-xl lg:text-4xl md:tracking-wide leading-2 md:leading-10">
+        <main className="p-4 mb-0 w-9/12 flex flex-col align-center justify-center space-y-10  text-yellow-400 font-mono  text-sm md:text-lg lg:text-4xl md:tracking- leading-2 md:leading-10">
           <Typewriter
             words={[
               "Enter a prompt: Be as specific or abstract as you'd like!",
