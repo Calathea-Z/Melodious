@@ -53,7 +53,7 @@ const Sidebar = () => {
         </button>
         <CreatePlaylist />
 
-        {/* ------------Opens Modal for creating a new playlist.                */}
+{/* ------------Opens Modal for creating a new playlist.                */}
         <hr className="border-t-[0.1px] border-greeen" />
         <button
           className="flex items-center space-x-2 hover:text-yellow-400"

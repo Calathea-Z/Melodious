@@ -3,12 +3,15 @@ import time from "../lib/time";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { isPlayingState, currentTrackIdState } from "../atoms/songAtom";
 import { createdPlaylistIdState, songUriState } from "../atoms/playlistAtom";
+import { useEffect, useState, useRef } from "react";
 
 function TopTenSong({ order, track }) {
 
   const [currentTrackId, setCurrentTrackId] = useRecoilState(currentTrackIdState);
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
-  const [songUri, setSongUri] = useRecoilState(songUriState);
+  // const [songUri, setSongUri] = useRecoilState(songUriState);
+  const songUri = useRef(null)
+  const [songsInPlaylist, setSongsInPlaylist] = useState([]);
   const newPlaylistId = useRecoilValue(createdPlaylistIdState);
   const spotifyApi = useSpotify();
 
@@ -23,15 +26,19 @@ function TopTenSong({ order, track }) {
 
   //-----Sets the URI of the user selected song for playlist addition and then calls helper function to complete process.
   const handleSetSongURI = () => {
-    setSongUri(track.uri);
-    addSongToPlaylist();
+    songUri.current = track.uri;
+    setTimeout(addSongToPlaylist, 10);
   };
 
   //-----Adds song to playlist. 
   const addSongToPlaylist = async () => {
-    const addedSong = spotifyApi.addTracksToPlaylist(newPlaylistId, [songUri]);
-    console.log(addedSong);
+    await spotifyApi.addTracksToPlaylist(newPlaylistId, [songUri.current]);
+    setSongUri('');
   };
+
+  useEffect(() => {
+    addSongToPlaylist();
+  }, [songUri]);
 
   return (
     <div className="grid grid-cols-2 text-purple-400 py-4 px-1 md:px-5">

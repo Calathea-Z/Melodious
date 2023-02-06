@@ -1,8 +1,7 @@
 import useSpotify from "../hooks/useSpotify";
 import time from "../lib/time";
 import { isPlayingState, currentTrackIdState } from "../atoms/songAtom";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { playlistIdState, songUriState } from "../atoms/playlistAtom";
+import { useRecoilState } from "recoil";
 
 function PlaylistSong({ order, track }) {
   

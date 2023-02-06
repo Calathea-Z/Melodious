@@ -1,12 +1,13 @@
 import useSpotify from "../hooks/useSpotify";
 import MelodiousLogo from "../assets/Melodious-1.png";
+import DropUpPlaylistSelector from "./DropUpPlaylistSelector";
 import Image from "next/image";
 import Songs from "./PlaylistSongs";
 import DropdownNav from "./DropdownNav";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { playlistIdState, playlistState } from "../atoms/playlistAtom";
 import { useEffect } from "react";
-import DropUpPlaylistSelector from "./DropUpPlaylistSelector";
+
 
 function MainFeed() {
   const spotifyApi = useSpotify();
@@ -20,7 +21,7 @@ function MainFeed() {
       .then((data) => {
         setPlaylist(data.body);
       })
-      .catch((err) => console.log("ERROR:", err));
+      .catch((err) => console.error("ERROR:", err));
   }, [spotifyApi, playlistId]);
 
   return (

@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import { getSession } from 'next-auth/react';
 import MainFeed from '../components/MainFeed';
 import SideBar from '../components/SideBar';
 import Player from '../components/Player';
+import { getSession } from 'next-auth/react';
 
 const Home = () => {
   return (

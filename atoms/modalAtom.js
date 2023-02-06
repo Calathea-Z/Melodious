@@ -9,4 +9,3 @@ export const successScreenState = atom({
   key: "successScreenState",
   default: false,
 });
-

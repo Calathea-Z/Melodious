@@ -1,9 +1,10 @@
 import useSpotify from "../hooks/useSpotify";
+import { Dialog, Transition } from "@headlessui/react";
 import { useEffect, useState, Fragment } from "react";
 import { createdPlaylistIdState } from "../atoms/playlistAtom";
 import { useRecoilState } from "recoil";
 import { modalState } from "../atoms/modalAtom";
-import { Dialog, Transition } from "@headlessui/react";
+
 
 function CreatePlaylist() {
   const [open, setOpen] = useRecoilState(modalState);
@@ -30,7 +31,7 @@ function CreatePlaylist() {
   //-----Only call newPlaylist when the playlist ID changes.
   useEffect(() => {
     newPlaylist();
-  }, []);
+  }, [playlistId]);
 
   return (
     //-----Transition root and Dialog allow for a smooth transition to the modal state.

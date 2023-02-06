@@ -34,7 +34,7 @@ function SearchTopTenByArtist() {
       .then((data) => {
         setArtistID(data.body.artists.items[0].id);
       })
-      .catch((err) => console.log("ERR GRAB ARTIST ID FUNCTION", err));
+      .catch((err) => console.error("ERR GRAB ARTIST ID FUNCTION", err));
   };
 
   //-----Grab top 10 songs with specific artists ID.

@@ -1,3 +1,4 @@
+//-----This component is currently not in use, but will be implemented later.
 import { Fragment } from "react";
 import { useRecoilState } from "recoil";
 import { successScreenState } from "../atoms/modalAtom";

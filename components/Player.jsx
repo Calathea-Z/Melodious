@@ -1,7 +1,6 @@
 import DropUpPlaylistSelector from "./DropUpPlaylistSelector";
 import useSongInfo from "../hooks/useSongInfo";
 import useSpotify from "../hooks/useSpotify";
-
 import { BackwardIcon, PauseCircleIcon, PlayCircleIcon, ForwardIcon, SpeakerWaveIcon as VolumeDown } from "@heroicons/react/24/outline";
 import { SpeakerWaveIcon as VolumeUp } from "@heroicons/react/24/solid";
 import { currentTrackIdState, isPlayingState } from "../atoms/songAtom";
@@ -9,8 +8,6 @@ import { useState, useEffect, useCallback } from "react";
 import { debounce } from "lodash";
 import { useSession } from "next-auth/react";
 import { useRecoilState } from "recoil";
-
-
 
 function Player() {
   const [currentTrackId, setCurrentTrackId] = useRecoilState(currentTrackIdState);
@@ -24,7 +21,6 @@ function Player() {
   const fetchCurrentSong = () => {
     if (!songInfo) {
       spotifyApi.getMyCurrentPlayingTrack().then((data) => {
-        console.log("Now Playing:", data.body?.item);
         setCurrentTrackId(data.body?.item?.id);
 
         spotifyApi.getMyCurrentPlaybackState().then((data) => {
@@ -50,7 +46,7 @@ function Player() {
 
   const adjustVolume = useCallback(
     debounce((volume) => {
-      spotifyApi.setVolume(volume).catch((err) => console.log("ERROR", err));
+      spotifyApi.setVolume(volume).catch((err) => console.error("ERROR", err));
     }, 500), []
   )
 

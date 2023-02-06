@@ -70,7 +70,7 @@ export default function GeneratePlaylist() {
       .then((data) => {
         setArtistID(data.body.artists.items[0].id);
       })
-      .catch((err) => console.log("ERR GRAB ARTIST ID FUNCTION", err));
+      .catch((err) => <console className="error"></console>("ERR GRAB ARTIST ID FUNCTION", err));
   };
 
   //----Return the selected Artist's top ten most played songs.

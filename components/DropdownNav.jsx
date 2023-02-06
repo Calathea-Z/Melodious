@@ -1,9 +1,7 @@
-import MelodiousLogo from '../assets/Melodious-1.png'
-import Image from 'next/image'
 import { ArrowLeftOnRectangleIcon, Bars3Icon, PlusCircleIcon, HomeIcon, CodeBracketSquareIcon, MagnifyingGlassCircleIcon, ChevronDownIcon } from '@heroicons/react/24/solid';
-import { Fragment } from 'react'
 import { signOut, useSession } from 'next-auth/react';
 import { Menu, Transition } from '@headlessui/react';
+import { Fragment } from 'react'
 
 function DropdownNav() {
 
@@ -17,7 +15,6 @@ return (
         <Fragment>
           <Menu.Button className=' inline-flex justify-center items-center text-xs w-full rounded-lg bg-transparent font-medium text-stone-500 hover:opacity-80 focus: outline-none'>
             <ChevronDownIcon className='h-5 w-5 font-extrabold text-l text-white'/>
-            {/* <Image className='w-[7rem]' src= { MelodiousLogo } alt='Melodious Logo' /> */}
           </Menu.Button>
           
 {/*-----Creates a smooth transition for modal opening and closing.           */}
