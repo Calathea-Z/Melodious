@@ -47,3 +47,7 @@ FUTURE FEATURES:
 5. Bug fixes. 
 
 I'd be happy to hear any suggestions or features that people would want, please dont hesistate to reach out. 
+
+
+SPECIAL THANKS to github user theLinmicheal who created the incredibly handy Spotify Web Api Node package.
+https://github.com/thelinmichael/spotify-web-api-node
