@@ -71,7 +71,7 @@ function SearchTopTenByArtist() {
                 type="text"
                 name="songValues"
                 placeholder="...Radiohead"
-                className="text-xs text-blue-600 rounded-md w-[180px] md: w-[300px] "
+                className="text-xs text-blue-600 rounded-md w-[150px] md: w-[300px] "
               />
               <button
                 type="button"

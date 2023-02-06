@@ -102,7 +102,7 @@ export default function GeneratePlaylist() {
       </header>
       <div className="`flex items-end justify-between space-x-2 bg-gradient-to-b to-purp from-greeen h-80 text-white p-8`">
         <Image className='w-[7rem]' src= { MelodiousLogo } alt='Melodious Logo' />
-        <main className="p-4 mb-0 w-9/12 flex flex-col align-center justify-center space-y-10  text-yellow-400 font-mono md:text-xl lg:text-4xl tracking-wide leading-10">
+        <main className="p-4 mb-0 w-9/12 flex flex-col align-center justify-center space-y-10  text-yellow-400 font-mono  text-sm md:text-xl lg:text-4xl md:tracking-wide leading-2 md:leading-10">
           <Typewriter
             words={[
               "Enter a prompt: Be as specific or abstract as you'd like!",
@@ -118,19 +118,19 @@ export default function GeneratePlaylist() {
                 placeholder="Atmospheric 60's Jazz from France"
                 value={userInput}
                 onChange={(e) => setUserInput(e.target.value)}
-                className="text-xs text-blue-600 rounded-md w-[200px] p-4"
+                className="text-xs text-blue-600 rounded-md w-[150px] md:w-[200px] p-4"
               />
               <button
-                className="z-0 flex items-center rounded-md border-yellow-400 text-blue-400 border-solid border-2 opacity-75 p-4 cursor-pointer hover:scale-125 transition transform duration-100 ease-out font-bold text-xs  hover:bg-yellow-400 hover:text-black"
+                className="z-0 flex items-center rounded-md border-yellow-400 text-blue-400 border-solid border-2 opacity-75 md:p-4 pr-1 pl-1 cursor-pointer md:hover:scale-125 transition transform duration-100 ease-out font-bold text-xs  hover:bg-yellow-400 hover:text-black"
                 type="submit"
                 value="Generate"
               >
                 Generate
               </button>
             </form>
-            <div className="text-greeen flex flex-col space-y-2 pb-28 font-serif  text-[13px] tracking-tight leading-snug mt-0">
+            <div className="text-greeen flex flex-col items-left space-y-2 pb-28 font-serif text-xs md:text-[13px] tracking-tight leading-snug mt-0">
               {result ? (
-                <div className="text-yellow-400 font-mono text-md ">
+                <div className="text-yellow-400 font-mono text-md text-center">
                   <Typewriter
                     words={["Select an Artist"]}
                     loop={1}
@@ -142,7 +142,7 @@ export default function GeneratePlaylist() {
                 </div>
               ) : (loading ? (
                 <ScaleLoader color='rgb(96 165 250)' />) : null
-              )}              <div className="flex flex-wrap w-96 space-y-2">
+              )}              <div className="inline-block md:flex-wrap  w-64 md:w-96 space-y-1 md:space-y-2">
                 {result?.map((result, index) => (
                   <div className="flex space-x-2 " key={index}>
                     <button
@@ -161,7 +161,7 @@ export default function GeneratePlaylist() {
         </main>
         {result ? (
           <div>
-            <hr className="border-t-[0.1px] border-pink-400 md:mt-52 mt-72" />
+            <hr className="border-t-[0.1px] border-pink-400 md:mt-52 mt-80" />
             <TopTenSongs />
           </div>
         ) : null}
