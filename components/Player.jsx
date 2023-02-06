@@ -69,7 +69,7 @@ function Player() {
 
   
   return (
-    <div className="h-24 bg-gradient-to-b from-gray-800 to-gray-900 text-yellow-400 grid grid-cols-3 text-xs md:text-base px-2 space-x-2 md:px-8">
+    <div className="h-24 bg-gradient-to-b from-gray-800 to-gray-900 text-emerald-200 grid grid-cols-3 text-xs md:text-base px-2 space-x-2 md:px-8">
       <div className="flex items-center space-x-4">
         <img
           src={songInfo?.album.images?.[0]?.url}
@@ -96,7 +96,7 @@ function Player() {
       <div className='flex items-center space-x-3 md:space-x-4 justify-end pr-5'>
         <VolumeDown onClick={() => volume > 0 && setVolume(volume-10)} className='button' />
         <input
-          className='w-14 md:w-28'
+          className='w-14 md:w-28 bg-emerald-200'
           type='range'
           value={volume}
           onChange={(e) => setVolume(Number(e.target.value))}
