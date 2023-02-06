@@ -16,8 +16,8 @@ return (
       {({open}) => (
         <Fragment>
           <Menu.Button className=' inline-flex justify-center items-center text-xs w-full rounded-lg bg-transparent font-medium text-stone-500 hover:opacity-80 focus: outline-none'>
-            <ChevronDownIcon className='h-5 w-5 font-extrabold text-l'/>
-            <Image className='w-[7rem]' src= { MelodiousLogo } alt='Melodious Logo' />
+            <ChevronDownIcon className='h-5 w-5 font-extrabold text-l text-white'/>
+            {/* <Image className='w-[7rem]' src= { MelodiousLogo } alt='Melodious Logo' /> */}
           </Menu.Button>
           
 {/*-----Creates a smooth transition for modal opening and closing.           */}

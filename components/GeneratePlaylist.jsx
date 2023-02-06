@@ -1,6 +1,8 @@
 import DropdownNav from "./DropdownNav";
 import TopTenSongs from "./TopTenSongs";
 import useSpotify from "../hooks/useSpotify";
+import MelodiousLogo from '../assets/Melodious-1.png'
+import Image from 'next/image'
 import { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { generatedListState } from "../atoms/generatorAtom";
@@ -99,6 +101,7 @@ export default function GeneratePlaylist() {
         <DropdownNav />
       </header>
       <div className="`flex items-end justify-between space-x-2 bg-gradient-to-b to-purp from-greeen h-80 text-white p-8`">
+        <Image className='w-[7rem]' src= { MelodiousLogo } alt='Melodious Logo' />
         <main className="p-4 mb-0 w-9/12 flex flex-col align-center justify-center space-y-10  text-yellow-400 font-mono md:text-xl lg:text-4xl tracking-wide leading-10">
           <Typewriter
             words={[

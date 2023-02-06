@@ -40,7 +40,7 @@ function PlaylistSong({ order, track }) {
 
 
   return (
-    <div className="grid grid-cols-2 text-purple-400 py-4 px-5 ">
+    <div className="grid grid-cols-2 text-purple-400 py-4 md:px-5 ">
       <div
         className="flex items-center space-x-4 hover:bg-gray-900 rounded-lg cursor-pointer"
         onClick={playSong}
@@ -52,8 +52,8 @@ function PlaylistSong({ order, track }) {
           className="h-20 w-20"
         />
         <div>
-          <p className="w-36 lg:w-64 truncate">{track?.track?.name}</p>
-          <p className="w-40 text-greeen">{track?.track?.artists[0].name}</p>
+          <p className="text-xs md:text-lg w-36 lg:w-64 truncate">{track?.track?.name}</p>
+          <p className=" text-xs md:text-lg w-36 text-greeen">{track?.track?.artists[0].name}</p>
         </div>
       </div>
       <div className="flex items-center justify-between ml-auto md:ml-0">
@@ -64,7 +64,7 @@ function PlaylistSong({ order, track }) {
           DELETE
         </button> */}
 
-        <p>{time(track?.track?.duration_ms)}</p>
+        <p className='text-white text-xs md:text-lg'>{time(track?.track?.duration_ms)}</p>
       </div>
     </div>
   );
