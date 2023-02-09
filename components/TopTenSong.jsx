@@ -50,7 +50,7 @@ function TopTenSong({ order, track }) {
         <p className="w-40 hidden md:inline text-white">{track?.album?.name}</p>
         <div>
           <button
-            className="text-xs md:text-lg rounded-lg p-2 border-yellow-300  opacity-80 hover:bg-yellow-400 hover:text-white transition transform duration-100 ease-out"
+            className="text-xs md:text-md rounded-lg p-2 border-yellow-300  opacity-80 hover:bg-yellow-400 hover:text-white transition transform duration-100 ease-out"
             onClick={handleSetSongURI}
           >
             Add to Playlist
