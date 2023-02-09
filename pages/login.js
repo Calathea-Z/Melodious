@@ -1,7 +1,7 @@
 import { getProviders, signIn } from "next-auth/react";
 import MelodiousLogo from "../assets/Melodious-1.png";
 import OpenAILogo from "../assets/OpenAI-logo.svg";
-import SpotifyLogo from "../assets/spotifyLogo.png";
+import SpotifyLogo from "../assets/spotifylogo.png";
 import Image from "next/image";
 import Typewriter from "react-typewriter-animate";
 
